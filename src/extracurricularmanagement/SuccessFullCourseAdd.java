@@ -47,9 +47,18 @@ public class SuccessFullCourseAdd extends javax.swing.JFrame {
 //        expertise_jComboBox1.set;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
-        course_jLabel1.setText(course.toString());
+    public void setCourse(Course courseArgs) {
+        this.course = courseArgs;
+        String messageSucess = "The Course has added successfully!";
+        String courseName = "Course Name : " + course.getExpertise();
+        String classDayTime = "Day and Time : " + course.getClassDay() + "  " + course.getClassTime();
+        String location = "Location :  " + course.getClassLocation();
+        String vavancy = "Total vacancy : " + course.getVacancies();
+        success_jLabel1.setText(messageSucess);
+        courseName_jLabel2.setText(courseName);
+        dateAndTime_jLabel3.setText(classDayTime);
+        location_jLabel4.setText(location);
+        vacancy_jLabel5.setText(vavancy);
     }
 
     /**
@@ -65,7 +74,11 @@ public class SuccessFullCourseAdd extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         goBack = new javax.swing.JButton();
         ok_jButton1 = new javax.swing.JButton();
-        course_jLabel1 = new javax.swing.JLabel();
+        success_jLabel1 = new javax.swing.JLabel();
+        courseName_jLabel2 = new javax.swing.JLabel();
+        dateAndTime_jLabel3 = new javax.swing.JLabel();
+        location_jLabel4 = new javax.swing.JLabel();
+        vacancy_jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -83,7 +96,7 @@ public class SuccessFullCourseAdd extends javax.swing.JFrame {
         titleLayout.setHorizontalGroup(
             titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, titleLayout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(561, Short.MAX_VALUE)
                 .add(header)
                 .add(459, 459, 459))
         );
@@ -113,35 +126,63 @@ public class SuccessFullCourseAdd extends javax.swing.JFrame {
             }
         });
 
-        course_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        success_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        success_jLabel1.setText("sucess/Fail");
+
+        courseName_jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        courseName_jLabel2.setText("course name");
+
+        dateAndTime_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        dateAndTime_jLabel3.setText("Date and Time");
+
+        location_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        location_jLabel4.setText("location");
+
+        vacancy_jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        vacancy_jLabel5.setText("location");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(1202, Short.MAX_VALUE)
-                        .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(559, 559, 559)
-                        .add(ok_jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 275, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(courseName_jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 505, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, dateAndTime_jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 500, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, location_jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 505, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(success_jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 505, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, vacancy_jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 505, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(466, 466, 466))))
             .add(jPanel1Layout.createSequentialGroup()
-                .add(436, 436, 436)
-                .add(course_jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 505, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(479, 479, 479)
+                .add(ok_jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 275, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 0, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(new java.awt.Component[] {dateAndTime_jLabel3, location_jLabel4}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .add(44, 44, 44)
-                .add(course_jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .add(55, 55, 55)
+                .add(success_jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(courseName_jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(dateAndTime_jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(location_jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(vacancy_jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(37, 37, 37)
                 .add(ok_jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 48, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(203, 203, 203)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 128, Short.MAX_VALUE)
                 .add(goBack)
                 .addContainerGap())
         );
@@ -151,10 +192,11 @@ public class SuccessFullCourseAdd extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(title, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(title, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(12, 12, 12))
+            .add(layout.createSequentialGroup()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -250,12 +292,16 @@ public class SuccessFullCourseAdd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel course_jLabel1;
+    private javax.swing.JLabel courseName_jLabel2;
+    private javax.swing.JLabel dateAndTime_jLabel3;
     private javax.swing.JButton goBack;
     private javax.swing.JLabel header;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel location_jLabel4;
     private javax.swing.JButton ok_jButton1;
+    private javax.swing.JLabel success_jLabel1;
     private javax.swing.JPanel title;
+    private javax.swing.JLabel vacancy_jLabel5;
     // End of variables declaration//GEN-END:variables
 
 }
