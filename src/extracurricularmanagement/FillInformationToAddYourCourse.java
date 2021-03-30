@@ -346,11 +346,13 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         String classDay = classDay_jComboBox3.getSelectedItem().toString();;
         String classTime = classTime_jComboBox4.getSelectedItem().toString();
         String vacancies = vacancies_jComboBox5.getSelectedItem().toString();
-
+        
         Course course = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, vacancies);
-
+        
         Optional<Course> courseOptional = Data.courseList.stream()
-                .filter(c -> c.getCoachID().equals(Data.currentLoggedCoach) && c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
+                .filter(c -> c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime) && c.getClassLocation().equals(classLocation))
+                //                .filter(c -> c.getCoachID().equals(Data.currentLoggedCoach) && c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
+                //                .filter(c -> c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
                 .findFirst();
         if (courseOptional.isPresent()) {
             JOptionPane.showMessageDialog(rootPane, "Conflict Course!"
@@ -362,7 +364,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
             SuccessFullCourseAdd successFullCourseAdd = new SuccessFullCourseAdd();
             successFullCourseAdd.setCourse(course);
             successFullCourseAdd.setVisible(true);
-
+            
             this.dispose();
         }
     }//GEN-LAST:event_save_buttonActionPerformed
