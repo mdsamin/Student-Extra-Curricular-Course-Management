@@ -41,6 +41,8 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
      */
     public FillInformationToAddYourCourse() {
         initComponents();
+//        expertise_jComboBox1.set;
+        expertise_jComboBox1.addItem("Badminton!");
     }
 
     /**
@@ -54,10 +56,21 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         title = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        goBack = new javax.swing.JButton();
-        header1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         header2 = new javax.swing.JLabel();
+        goBack = new javax.swing.JButton();
+        expertise_header1 = new javax.swing.JLabel();
+        expertise_jComboBox1 = new javax.swing.JComboBox<>();
+        classLocation_header2 = new javax.swing.JLabel();
+        classLocations_jComboBox2 = new javax.swing.JComboBox<>();
+        classDay_header3 = new javax.swing.JLabel();
+        classDay_jComboBox3 = new javax.swing.JComboBox<>();
+        clasDay_expertise_header4 = new javax.swing.JLabel();
+        classTime_header5 = new javax.swing.JLabel();
+        classTime_jComboBox4 = new javax.swing.JComboBox<>();
+        classTime_header6 = new javax.swing.JLabel();
+        vacancies_header7 = new javax.swing.JLabel();
+        vacancies_jComboBox5 = new javax.swing.JComboBox<>();
+        save_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -75,7 +88,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         titleLayout.setHorizontalGroup(
             titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, titleLayout.createSequentialGroup()
-                .addContainerGap(493, Short.MAX_VALUE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(header)
                 .add(459, 459, 459))
         );
@@ -89,6 +102,12 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
+        header2.setBackground(new java.awt.Color(0, 102, 102));
+        header2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        header2.setForeground(new java.awt.Color(255, 255, 255));
+        header2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header2.setText("Fill information to add your course");
+
         goBack.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         goBack.setText("Go Back");
         goBack.addActionListener(new java.awt.event.ActionListener() {
@@ -97,65 +116,175 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
             }
         });
 
-        header1.setBackground(new java.awt.Color(0, 102, 102));
-        header1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        header1.setForeground(new java.awt.Color(255, 255, 255));
-        header1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        header1.setText("Expertise");
+        expertise_header1.setBackground(new java.awt.Color(0, 102, 102));
+        expertise_header1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        expertise_header1.setForeground(new java.awt.Color(255, 255, 255));
+        expertise_header1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        expertise_header1.setText("Expertise");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        expertise_jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        expertise_jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Swiming", "Music", "Dancing", "Chess", "Gymnastics" }));
+        expertise_jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                expertise_jComboBox1ActionPerformed(evt);
             }
         });
 
-        header2.setBackground(new java.awt.Color(0, 102, 102));
-        header2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        header2.setForeground(new java.awt.Color(255, 255, 255));
-        header2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        header2.setText("Fill information to add your course");
+        classLocation_header2.setBackground(new java.awt.Color(0, 102, 102));
+        classLocation_header2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classLocation_header2.setForeground(new java.awt.Color(255, 255, 255));
+        classLocation_header2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        classLocation_header2.setText("Class Location");
+
+        classLocations_jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classLocations_jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Swiming Pool 1", "Swiming Pool 2", "Art School Yeard", "Art SChool Hall", "Art School Hall 2", "Math school Yeard", "Gym 1" }));
+        classLocations_jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classLocations_jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        classDay_header3.setBackground(new java.awt.Color(0, 102, 102));
+        classDay_header3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classDay_header3.setForeground(new java.awt.Color(255, 255, 255));
+        classDay_header3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        classDay_header3.setText("Class Day");
+
+        classDay_jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classDay_jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mon - Tue" }));
+        classDay_jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classDay_jComboBox3ActionPerformed(evt);
+            }
+        });
+
+        clasDay_expertise_header4.setBackground(new java.awt.Color(0, 102, 102));
+        clasDay_expertise_header4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        clasDay_expertise_header4.setForeground(new java.awt.Color(255, 255, 255));
+        clasDay_expertise_header4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        clasDay_expertise_header4.setText("(Mon-Fri)");
+
+        classTime_header5.setBackground(new java.awt.Color(0, 102, 102));
+        classTime_header5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classTime_header5.setForeground(new java.awt.Color(255, 255, 255));
+        classTime_header5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        classTime_header5.setText("Class Time");
+
+        classTime_jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classTime_jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10am-5pm" }));
+        classTime_jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classTime_jComboBox4ActionPerformed(evt);
+            }
+        });
+
+        classTime_header6.setBackground(new java.awt.Color(0, 102, 102));
+        classTime_header6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        classTime_header6.setForeground(new java.awt.Color(255, 255, 255));
+        classTime_header6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        classTime_header6.setText("(9:00-17:00)");
+
+        vacancies_header7.setBackground(new java.awt.Color(0, 102, 102));
+        vacancies_header7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        vacancies_header7.setForeground(new java.awt.Color(255, 255, 255));
+        vacancies_header7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vacancies_header7.setText("Vacancies");
+
+        vacancies_jComboBox5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        vacancies_jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "7", "10", "10", "20", "20", "20" }));
+        vacancies_jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vacancies_jComboBox5ActionPerformed(evt);
+            }
+        });
+
+        save_button.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        save_button.setText("Save");
+        save_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_buttonActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(480, 480, 480)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .add(header1)
-                        .add(63, 63, 63)
-                        .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(545, 545, 545))))
-            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(517, Short.MAX_VALUE)
                     .add(header2)
-                    .add(442, 442, 442)))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(save_button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                .add(jPanel1Layout.createSequentialGroup()
+                                    .add(vacancies_header7)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(vacancies_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(jPanel1Layout.createSequentialGroup()
+                                    .add(classTime_header5)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(classTime_jComboBox4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(jPanel1Layout.createSequentialGroup()
+                                    .add(classDay_header3)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(jPanel1Layout.createSequentialGroup()
+                                    .add(expertise_header1)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(jPanel1Layout.createSequentialGroup()
+                                    .add(classLocation_header2)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(classLocations_jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                        .add(18, 18, 18)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(classTime_header6)
+                            .add(clasDay_expertise_header4))))
+                .add(421, 421, 421))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        jPanel1Layout.linkSize(new java.awt.Component[] {classDay_jComboBox3, classLocations_jComboBox2, classTime_jComboBox4, expertise_jComboBox1, vacancies_jComboBox5}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(header2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(expertise_header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(104, 104, 104)
-                        .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(96, 96, 96)
-                        .add(header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 371, Short.MAX_VALUE)
+                        .add(8, 8, 8)
+                        .add(classLocations_jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(classLocation_header2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(classDay_header3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(clasDay_expertise_header4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(17, 17, 17)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(classTime_jComboBox4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(classTime_header5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(classTime_header6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(vacancies_header7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(vacancies_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(22, 22, 22)
+                .add(save_button)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 77, Short.MAX_VALUE)
                 .add(goBack)
                 .addContainerGap())
-            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(jPanel1Layout.createSequentialGroup()
-                    .add(10, 10, 10)
-                    .add(header2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(507, Short.MAX_VALUE)))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -187,9 +316,29 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_goBackActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void expertise_jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expertise_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_expertise_jComboBox1ActionPerformed
+
+    private void classLocations_jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classLocations_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_classLocations_jComboBox2ActionPerformed
+
+    private void classDay_jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classDay_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_classDay_jComboBox3ActionPerformed
+
+    private void classTime_jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classTime_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_classTime_jComboBox4ActionPerformed
+
+    private void vacancies_jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vacancies_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vacancies_jComboBox5ActionPerformed
+
+    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_save_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,13 +392,24 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel clasDay_expertise_header4;
+    private javax.swing.JLabel classDay_header3;
+    private javax.swing.JComboBox<String> classDay_jComboBox3;
+    private javax.swing.JLabel classLocation_header2;
+    private javax.swing.JComboBox<String> classLocations_jComboBox2;
+    private javax.swing.JLabel classTime_header5;
+    private javax.swing.JLabel classTime_header6;
+    private javax.swing.JComboBox<String> classTime_jComboBox4;
+    private javax.swing.JLabel expertise_header1;
+    private javax.swing.JComboBox<String> expertise_jComboBox1;
     private javax.swing.JButton goBack;
     private javax.swing.JLabel header;
-    private javax.swing.JLabel header1;
     private javax.swing.JLabel header2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton save_button;
     private javax.swing.JPanel title;
+    private javax.swing.JLabel vacancies_header7;
+    private javax.swing.JComboBox<String> vacancies_jComboBox5;
     // End of variables declaration//GEN-END:variables
 
 }
