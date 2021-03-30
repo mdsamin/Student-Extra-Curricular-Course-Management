@@ -8,11 +8,18 @@ package extracurricularmanagement.data;
 import extracurricularmanagement.model.Student;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 /**
  *
  * @author Dell
  */
 public class Data {
+
     public static List<Student> studentsList = new ArrayList<>();
+    public static List<String> coachList = Arrays.asList(new String[]{
+        "123",
+        "456",
+        "789"
+    });
 }

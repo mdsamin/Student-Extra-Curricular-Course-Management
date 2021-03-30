@@ -29,6 +29,11 @@
  */
 package extracurricularmanagement;
 
+import extracurricularmanagement.data.Data;
+import extracurricularmanagement.model.Student;
+import java.util.Optional;
+import javax.swing.JOptionPane;
+
 public class CoachLoggin extends javax.swing.JFrame {
 
     /**
@@ -205,6 +210,29 @@ public class CoachLoggin extends javax.swing.JFrame {
 
     private void logging_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logging_jButton1ActionPerformed
         // TODO add your handling code here:
+        String logginID = loggingID_TextField.getText().toString();
+        System.out.println("coach ID : " + logginID);
+        Data.coachList.forEach(id -> System.out.println(id));
+
+        if (logginID.equals(Data.coachList.get(0))) {
+            System.out.println("MATCH!");
+        }
+
+        if (!loggingID_TextField.getText().toString().isEmpty()) {
+            Optional<String> coach = Data.coachList.stream()
+                    .filter(s -> s.equals(logginID))
+                    .findFirst();
+            
+            if (coach.isPresent()) {
+                FillInformationToAddYourCourse addYourCourse = new FillInformationToAddYourCourse();
+                addYourCourse.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Account does not exist! Please create an account First!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Please enter an ID!");
+        }
     }//GEN-LAST:event_logging_jButton1ActionPerformed
 
     /**

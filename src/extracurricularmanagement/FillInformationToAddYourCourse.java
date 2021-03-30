@@ -29,12 +29,17 @@
  */
 package extracurricularmanagement;
 
-public class VisitorAppointment extends javax.swing.JFrame {
+import extracurricularmanagement.data.Data;
+import extracurricularmanagement.model.Student;
+import java.util.Optional;
+import javax.swing.JOptionPane;
+
+public class FillInformationToAddYourCourse extends javax.swing.JFrame {
 
     /**
      * Creates new form Antenna
      */
-    public VisitorAppointment() {
+    public FillInformationToAddYourCourse() {
         initComponents();
     }
 
@@ -50,7 +55,9 @@ public class VisitorAppointment extends javax.swing.JFrame {
         header = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         goBack = new javax.swing.JButton();
-        bookAppointment = new javax.swing.JButton();
+        header1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        header2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -90,35 +97,65 @@ public class VisitorAppointment extends javax.swing.JFrame {
             }
         });
 
-        bookAppointment.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        bookAppointment.setText("Book Appoiment");
-        bookAppointment.addActionListener(new java.awt.event.ActionListener() {
+        header1.setBackground(new java.awt.Color(0, 102, 102));
+        header1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        header1.setForeground(new java.awt.Color(255, 255, 255));
+        header1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header1.setText("Expertise");
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bookAppointmentActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
             }
         });
+
+        header2.setBackground(new java.awt.Color(0, 102, 102));
+        header2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        header2.setForeground(new java.awt.Color(255, 255, 255));
+        header2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header2.setText("Fill information to add your course");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .add(jPanel1Layout.createSequentialGroup()
-                .add(486, 486, 486)
-                .add(bookAppointment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 313, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(header1)
+                        .add(63, 63, 63)
+                        .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(545, 545, 545))))
+            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(517, Short.MAX_VALUE)
+                    .add(header2)
+                    .add(442, 442, 442)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(190, 190, 190)
-                .add(bookAppointment)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 289, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(104, 104, 104)
+                        .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(96, 96, 96)
+                        .add(header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 371, Short.MAX_VALUE)
                 .add(goBack)
                 .addContainerGap())
+            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel1Layout.createSequentialGroup()
+                    .add(10, 10, 10)
+                    .add(header2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(507, Short.MAX_VALUE)))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -145,17 +182,14 @@ public class VisitorAppointment extends javax.swing.JFrame {
 
     private void goBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackActionPerformed
         // TODO add your handling code here:
-        LoginPage home = new LoginPage();
-        home.setVisible(true);
+        CoachLoggin coachLoggin = new CoachLoggin();
+        coachLoggin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_goBackActionPerformed
 
-    private void bookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookAppointmentActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        SearchInstructorToBookApoinment parentSearch = new SearchInstructorToBookApoinment();
-        parentSearch.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_bookAppointmentActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,13 +209,13 @@ public class VisitorAppointment extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisitorAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FillInformationToAddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisitorAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FillInformationToAddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisitorAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FillInformationToAddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisitorAppointment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FillInformationToAddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -203,15 +237,17 @@ public class VisitorAppointment extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisitorAppointment().setVisible(true);
+                new FillInformationToAddYourCourse().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bookAppointment;
     private javax.swing.JButton goBack;
     private javax.swing.JLabel header;
+    private javax.swing.JLabel header1;
+    private javax.swing.JLabel header2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel title;
     // End of variables declaration//GEN-END:variables
