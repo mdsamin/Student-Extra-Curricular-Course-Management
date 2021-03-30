@@ -5,6 +5,7 @@
  */
 package extracurricularmanagement.data;
 
+import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.Student;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,9 @@ import java.util.*;
  */
 public class Data {
 
+    public static int courseCount = 0;
+    public static String currentLoggedCoach = "";
+    public static List<Course> courseList = new ArrayList<>();
     public static List<Student> studentsList = new ArrayList<>();
     public static List<String> coachList = Arrays.asList(new String[]{
         "123",

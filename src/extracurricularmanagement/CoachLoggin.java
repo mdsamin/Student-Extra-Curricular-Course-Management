@@ -222,8 +222,8 @@ public class CoachLoggin extends javax.swing.JFrame {
             Optional<String> coach = Data.coachList.stream()
                     .filter(s -> s.equals(logginID))
                     .findFirst();
-            
             if (coach.isPresent()) {
+                Data.currentLoggedCoach = logginID;
                 FillInformationToAddYourCourse addYourCourse = new FillInformationToAddYourCourse();
                 addYourCourse.setVisible(true);
                 this.dispose();

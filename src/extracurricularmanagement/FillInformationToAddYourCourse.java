@@ -30,6 +30,7 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
+import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.Student;
 import java.util.Optional;
 import javax.swing.JOptionPane;
@@ -151,7 +152,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         classDay_header3.setText("Class Day");
 
         classDay_jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        classDay_jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mon - Tue" }));
+        classDay_jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
         classDay_jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classDay_jComboBox3ActionPerformed(evt);
@@ -171,7 +172,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         classTime_header5.setText("Class Time");
 
         classTime_jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        classTime_jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10am-5pm" }));
+        classTime_jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10:00-11:00", "11:00-12:00", "12:00-13:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "10:00-11:00" }));
         classTime_jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classTime_jComboBox4ActionPerformed(evt);
@@ -338,6 +339,17 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
         // TODO add your handling code here:
+
+        String coachID = Data.currentLoggedCoach;
+        String courseID = Integer.toString(Data.courseCount++);
+        String expertise = expertise_jComboBox1.getSelectedItem().toString();
+        String classLocation = classLocations_jComboBox2.getSelectedItem().toString();
+        String classDay = classDay_jComboBox3.getSelectedItem().toString();;
+        String classTime = classTime_jComboBox4.getSelectedItem().toString();
+        String vacancies = vacancies_jComboBox5.getSelectedItem().toString();
+
+        Course course = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, vacancies);
+        Data.courseList.add(course);
     }//GEN-LAST:event_save_buttonActionPerformed
 
     /**
