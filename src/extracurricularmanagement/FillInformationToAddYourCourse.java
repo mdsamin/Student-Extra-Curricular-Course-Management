@@ -42,7 +42,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
      */
     public FillInformationToAddYourCourse() {
         initComponents();
-//        expertise_jComboBox1.set;
+        Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
     }
 
     /**
@@ -123,7 +123,6 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         expertise_header1.setText("Expertise");
 
         expertise_jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        expertise_jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Swiming", "Music", "Dancing", "Chess", "Gymnastics" }));
         expertise_jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 expertise_jComboBox1ActionPerformed(evt);
@@ -347,9 +346,9 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         String classDay = classDay_jComboBox3.getSelectedItem().toString();;
         String classTime = classTime_jComboBox4.getSelectedItem().toString();
         String vacancies = vacancies_jComboBox5.getSelectedItem().toString();
-        
+
         Course course = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, vacancies);
-        
+
         Optional<Course> courseOptional = Data.courseList.stream()
                 .filter(c -> c.getCoachID().equals(Data.currentLoggedCoach) && c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
                 .findFirst();
@@ -363,7 +362,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
             SuccessFullCourseAdd successFullCourseAdd = new SuccessFullCourseAdd();
             successFullCourseAdd.setCourse(course);
             successFullCourseAdd.setVisible(true);
-            
+
             this.dispose();
         }
     }//GEN-LAST:event_save_buttonActionPerformed

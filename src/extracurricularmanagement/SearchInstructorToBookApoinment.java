@@ -54,9 +54,6 @@ public class SearchInstructorToBookApoinment extends javax.swing.JFrame {
         header_jLabel3 = new javax.swing.JLabel();
         expertise_jTextField1 = new javax.swing.JTextField();
         search_expertise_jButton1 = new javax.swing.JButton();
-        course_name_jLabel4 = new javax.swing.JLabel();
-        course_name_jTextField2 = new javax.swing.JTextField();
-        search_course_name_jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -98,7 +95,7 @@ public class SearchInstructorToBookApoinment extends javax.swing.JFrame {
 
         expertise_jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         expertise_jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        expertise_jLabel2.setText("Expertise");
+        expertise_jLabel2.setText("Expertise/Course Name");
 
         header_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         header_jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,20 +111,6 @@ public class SearchInstructorToBookApoinment extends javax.swing.JFrame {
             }
         });
 
-        course_name_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        course_name_jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        course_name_jLabel4.setText("Course Name");
-
-        course_name_jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        search_course_name_jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        search_course_name_jButton2.setText("Search");
-        search_course_name_jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search_course_name_jButton2ActionPerformed(evt);
-            }
-        });
-
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,20 +121,12 @@ public class SearchInstructorToBookApoinment extends javax.swing.JFrame {
                         .addContainerGap(1134, Short.MAX_VALUE)
                         .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(343, 343, 343)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(jPanel1Layout.createSequentialGroup()
-                                .add(course_name_jLabel4)
-                                .add(52, 52, 52)
-                                .add(course_name_jTextField2))
-                            .add(jPanel1Layout.createSequentialGroup()
-                                .add(expertise_jLabel2)
-                                .add(98, 98, 98)
-                                .add(expertise_jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 300, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(241, 241, 241)
+                        .add(expertise_jLabel2)
+                        .add(46, 46, 46)
+                        .add(expertise_jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 454, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(33, 33, 33)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(search_expertise_jButton1)
-                            .add(search_course_name_jButton2))))
+                        .add(search_expertise_jButton1)))
                 .addContainerGap())
             .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(jPanel1Layout.createSequentialGroup()
@@ -167,12 +142,7 @@ public class SearchInstructorToBookApoinment extends javax.swing.JFrame {
                     .add(expertise_jLabel2)
                     .add(expertise_jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(search_expertise_jButton1))
-                .add(43, 43, 43)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(course_name_jLabel4)
-                    .add(course_name_jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(search_course_name_jButton2))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 282, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 358, Short.MAX_VALUE)
                 .add(goBack)
                 .addContainerGap())
             .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -214,10 +184,6 @@ public class SearchInstructorToBookApoinment extends javax.swing.JFrame {
     private void search_expertise_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_expertise_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_search_expertise_jButton1ActionPerformed
-
-    private void search_course_name_jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_course_name_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_search_course_name_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,15 +285,12 @@ public class SearchInstructorToBookApoinment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel course_name_jLabel4;
-    private javax.swing.JTextField course_name_jTextField2;
     private javax.swing.JLabel expertise_jLabel2;
     private javax.swing.JTextField expertise_jTextField1;
     private javax.swing.JButton goBack;
     private javax.swing.JLabel header;
     private javax.swing.JLabel header_jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton search_course_name_jButton2;
     private javax.swing.JButton search_expertise_jButton1;
     private javax.swing.JPanel title;
     // End of variables declaration//GEN-END:variables

@@ -244,13 +244,7 @@
               <Font name="Tahoma" size="24" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Swiming"/>
-                <StringItem index="1" value="Music"/>
-                <StringItem index="2" value="Dancing"/>
-                <StringItem index="3" value="Chess"/>
-                <StringItem index="4" value="Gymnastics"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>

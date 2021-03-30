@@ -22,8 +22,9 @@ public class Data {
     public static List<Course> courseList = new ArrayList<>();
     public static List<Student> studentsList = new ArrayList<>();
     public static List<String> coachList = Arrays.asList(new String[]{
-        "123",
-        "456",
-        "789"
+        "123","456","789"
+    });
+    public static List<String> expertiseList = Arrays.asList(new String[]{
+        "Swiming", "Music", "Dancing", "Chess", "Gymnastics"
     });
 }
