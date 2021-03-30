@@ -354,7 +354,9 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                 .filter(c -> c.getCoachID().equals(Data.currentLoggedCoach) && c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
                 .findFirst();
         if (courseOptional.isPresent()) {
-            JOptionPane.showMessageDialog(rootPane, "Conflict Course!");
+            JOptionPane.showMessageDialog(rootPane, "Conflict Course!"
+                    + "\nAnother course Same Day and Time!"
+                    + "\nChange Either Course, Date or Time");
         } else {
             Data.courseList.add(course);
             Data.courseList.forEach(c -> System.out.println(c.toString()));
