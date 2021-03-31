@@ -30,10 +30,13 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
+import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.Student;
+import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FillInformationToAddYourCourse extends javax.swing.JFrame {
 
@@ -71,6 +74,10 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         vacancies_header7 = new javax.swing.JLabel();
         vacancies_jComboBox5 = new javax.swing.JComboBox<>();
         save_button = new javax.swing.JButton();
+        goBack1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -88,7 +95,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         titleLayout.setHorizontalGroup(
             titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, titleLayout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(519, Short.MAX_VALUE)
                 .add(header)
                 .add(459, 459, 459))
         );
@@ -103,13 +110,15 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
         header2.setBackground(new java.awt.Color(0, 102, 102));
-        header2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        header2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         header2.setForeground(new java.awt.Color(255, 255, 255));
         header2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         header2.setText("Fill information to add your course");
+        header2.setAutoscrolls(true);
 
-        goBack.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        goBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         goBack.setText("Go Back");
+        goBack.setAutoscrolls(true);
         goBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goBackActionPerformed(evt);
@@ -117,12 +126,14 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         });
 
         expertise_header1.setBackground(new java.awt.Color(0, 102, 102));
-        expertise_header1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        expertise_header1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         expertise_header1.setForeground(new java.awt.Color(255, 255, 255));
         expertise_header1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         expertise_header1.setText("Expertise");
+        expertise_header1.setAutoscrolls(true);
 
-        expertise_jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        expertise_jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        expertise_jComboBox1.setAutoscrolls(true);
         expertise_jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 expertise_jComboBox1ActionPerformed(evt);
@@ -130,13 +141,15 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         });
 
         classLocation_header2.setBackground(new java.awt.Color(0, 102, 102));
-        classLocation_header2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classLocation_header2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         classLocation_header2.setForeground(new java.awt.Color(255, 255, 255));
         classLocation_header2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         classLocation_header2.setText("Class Location");
+        classLocation_header2.setAutoscrolls(true);
 
-        classLocations_jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classLocations_jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         classLocations_jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Swiming Pool 1", "Swiming Pool 2", "Art School Yeard", "Art SChool Hall", "Art School Hall 2", "Math school Yeard", "Gym 1" }));
+        classLocations_jComboBox2.setAutoscrolls(true);
         classLocations_jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classLocations_jComboBox2ActionPerformed(evt);
@@ -144,13 +157,15 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         });
 
         classDay_header3.setBackground(new java.awt.Color(0, 102, 102));
-        classDay_header3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classDay_header3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         classDay_header3.setForeground(new java.awt.Color(255, 255, 255));
         classDay_header3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         classDay_header3.setText("Class Day");
+        classDay_header3.setAutoscrolls(true);
 
-        classDay_jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classDay_jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         classDay_jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
+        classDay_jComboBox3.setAutoscrolls(true);
         classDay_jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classDay_jComboBox3ActionPerformed(evt);
@@ -162,15 +177,18 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         clasDay_expertise_header4.setForeground(new java.awt.Color(255, 255, 255));
         clasDay_expertise_header4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         clasDay_expertise_header4.setText("(Mon-Fri)");
+        clasDay_expertise_header4.setAutoscrolls(true);
 
         classTime_header5.setBackground(new java.awt.Color(0, 102, 102));
-        classTime_header5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classTime_header5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         classTime_header5.setForeground(new java.awt.Color(255, 255, 255));
         classTime_header5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         classTime_header5.setText("Class Time");
+        classTime_header5.setAutoscrolls(true);
 
-        classTime_jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        classTime_jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         classTime_jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10:00-11:00", "11:00-12:00", "12:00-13:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "10:00-11:00" }));
+        classTime_jComboBox4.setAutoscrolls(true);
         classTime_jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classTime_jComboBox4ActionPerformed(evt);
@@ -182,26 +200,39 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         classTime_header6.setForeground(new java.awt.Color(255, 255, 255));
         classTime_header6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         classTime_header6.setText("(9:00-17:00)");
+        classTime_header6.setAutoscrolls(true);
 
         vacancies_header7.setBackground(new java.awt.Color(0, 102, 102));
-        vacancies_header7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        vacancies_header7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         vacancies_header7.setForeground(new java.awt.Color(255, 255, 255));
         vacancies_header7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         vacancies_header7.setText("Vacancies");
+        vacancies_header7.setAutoscrolls(true);
 
-        vacancies_jComboBox5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        vacancies_jComboBox5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         vacancies_jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "7", "10", "10", "20", "20", "20" }));
+        vacancies_jComboBox5.setAutoscrolls(true);
         vacancies_jComboBox5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vacancies_jComboBox5ActionPerformed(evt);
             }
         });
 
-        save_button.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        save_button.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         save_button.setText("Save");
+        save_button.setAutoscrolls(true);
         save_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 save_buttonActionPerformed(evt);
+            }
+        });
+
+        goBack1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        goBack1.setText("Show Previous Courses");
+        goBack1.setAutoscrolls(true);
+        goBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBack1ActionPerformed(evt);
             }
         });
 
@@ -209,15 +240,15 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(header2)
+                .add(80, 80, 80))
             .add(jPanel1Layout.createSequentialGroup()
-                .add(480, 480, 480)
+                .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(header2)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jPanel1Layout.createSequentialGroup()
-                                .add(0, 0, Short.MAX_VALUE)
-                                .add(save_button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 237, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .add(vacancies_header7)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -237,15 +268,19 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .add(classLocation_header2)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(classLocations_jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                                .add(classLocations_jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .add(0, 0, Short.MAX_VALUE)
+                                .add(save_button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 237, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                         .add(18, 18, 18)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(classTime_header6)
-                            .add(clasDay_expertise_header4))))
-                .add(421, 421, 421))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(clasDay_expertise_header4)))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 237, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(goBack1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 237, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -282,28 +317,62 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                     .add(vacancies_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(22, 22, 22)
                 .add(save_button)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 77, Short.MAX_VALUE)
+                .add(27, 27, 27)
                 .add(goBack)
-                .addContainerGap())
+                .add(29, 29, 29)
+                .add(goBack1)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
+
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Course ID", "Coach Name", "Course Name", "Date and Time", "Location", "Vacance"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("Home");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(title, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .add(12, 12, 12))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(layout.createSequentialGroup()
+                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 90, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(title, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                    .add(359, 359, 359)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(title, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(title, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                    .add(0, 81, Short.MAX_VALUE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 568, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -315,6 +384,30 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         coachLoggin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_goBackActionPerformed
+
+    public void addRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        List<Course> list = Data.courseList;
+        Object rowData[] = new Object[6];
+        model.setRowCount(0);
+        for (int i = 0; i < list.size(); i++) {
+            //courseID
+            rowData[0] = list.get(i).getCourseID();
+            //coachName
+            rowData[1] = list.get(i).getCoachID();
+            //course Name
+            rowData[2] = list.get(i).getExpertise();
+            //date and time
+            rowData[3] = list.get(i).getClassDay() + " " + list.get(i).getClassTime();
+            //location
+            rowData[4] = list.get(i).getClassLocation();
+            //location
+            rowData[5] = list.get(i).getVacancies();
+
+            model.addRow(rowData);
+        }
+    }
+
 
     private void expertise_jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expertise_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -346,9 +439,9 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         String classDay = classDay_jComboBox3.getSelectedItem().toString();;
         String classTime = classTime_jComboBox4.getSelectedItem().toString();
         String vacancies = vacancies_jComboBox5.getSelectedItem().toString();
-        
+
         Course course = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, vacancies);
-        
+
         Optional<Course> courseOptional = Data.courseList.stream()
                 .filter(c -> c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime) && c.getClassLocation().equals(classLocation))
                 //                .filter(c -> c.getCoachID().equals(Data.currentLoggedCoach) && c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
@@ -361,13 +454,30 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         } else {
             Data.courseList.add(course);
             Data.courseList.forEach(c -> System.out.println(c.toString()));
-            SuccessFullCourseAdd successFullCourseAdd = new SuccessFullCourseAdd();
-            successFullCourseAdd.setCourse(course);
-            successFullCourseAdd.setVisible(true);
-            
-            this.dispose();
+            JOptionPane.showMessageDialog(rootPane, "Course Added SccessFully!");
+            addRowToJTable();
+
         }
     }//GEN-LAST:event_save_buttonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        LoginPage loginPage = new LoginPage();
+        loginPage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    boolean dataLoad = true;
+    private void goBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBack1ActionPerformed
+        // TODO add your handling code here:
+        if (dataLoad) {
+            GenerateData.generateCourseList();
+            addRowToJTable();
+            dataLoad = false;
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Data Already loaded!");
+        }
+    }//GEN-LAST:event_goBack1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,9 +542,13 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
     private javax.swing.JLabel expertise_header1;
     private javax.swing.JComboBox<String> expertise_jComboBox1;
     private javax.swing.JButton goBack;
+    private javax.swing.JButton goBack1;
     private javax.swing.JLabel header;
     private javax.swing.JLabel header2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton save_button;
     private javax.swing.JPanel title;
     private javax.swing.JLabel vacancies_header7;

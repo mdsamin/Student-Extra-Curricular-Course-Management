@@ -30,15 +30,45 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
+import extracurricularmanagement.data.GenerateData;
+import extracurricularmanagement.model.Course;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class ViewAllCourses extends javax.swing.JFrame {
+
+    boolean firstTime = true;
 
     /**
      * Creates new form Antenna
      */
     public ViewAllCourses() {
         initComponents();
+        addRowToJTable();
         Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
+    }
+
+    public void addRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        List<Course> list = Data.courseList;
+        Object rowData[] = new Object[6];
+        for (int i = 0; i < list.size(); i++) {
+            //courseID
+            rowData[0] = list.get(i).getCourseID();
+            //coachName
+            rowData[1] = list.get(i).getCoachID();
+            //course Name
+            rowData[2] = list.get(i).getExpertise();
+            //date and time
+            rowData[3] = list.get(i).getClassDay() + " " + list.get(i).getClassTime();
+            //location
+            rowData[4] = list.get(i).getClassLocation();
+            //location
+            rowData[5] = list.get(i).getVacancies();
+
+            model.addRow(rowData);
+        }
     }
 
     /**
@@ -52,6 +82,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         title = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -72,12 +103,21 @@ public class ViewAllCourses extends javax.swing.JFrame {
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         header.setText("Extra curricular course Managment");
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton3.setText("Home");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout titleLayout = new org.jdesktop.layout.GroupLayout(title);
         title.setLayout(titleLayout);
         titleLayout.setHorizontalGroup(
             titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(titleLayout.createSequentialGroup()
-                .add(435, 435, 435)
+                .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 90, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(345, 345, 345)
                 .add(header)
                 .addContainerGap(493, Short.MAX_VALUE))
         );
@@ -85,7 +125,9 @@ public class ViewAllCourses extends javax.swing.JFrame {
             titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, titleLayout.createSequentialGroup()
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(header, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jButton3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, header, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -94,69 +136,12 @@ public class ViewAllCourses extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Course Name", "Coach Name", "Date and Time", "Status"
+                "Course ID", "Coach Name", "Course Name", "Date and Time", "Location", "Vacance"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -265,6 +250,13 @@ public class ViewAllCourses extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_expertise_jComboBox1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        LoginPage loginPage = new LoginPage();
+        loginPage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,6 +331,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
     private javax.swing.JLabel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
