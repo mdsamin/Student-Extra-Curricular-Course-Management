@@ -29,6 +29,11 @@
  */
 package extracurricularmanagement;
 
+import extracurricularmanagement.data.Data;
+import extracurricularmanagement.model.EnrolledCourses;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class VisitorAppointment extends javax.swing.JFrame {
 
     /**
@@ -36,6 +41,7 @@ public class VisitorAppointment extends javax.swing.JFrame {
      */
     public VisitorAppointment() {
         initComponents();
+        Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
     }
 
     /**
@@ -51,6 +57,8 @@ public class VisitorAppointment extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         goBack = new javax.swing.JButton();
         bookAppointment = new javax.swing.JButton();
+        expertise_jComboBox1 = new javax.swing.JComboBox<>();
+        expertise_header1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -90,7 +98,7 @@ public class VisitorAppointment extends javax.swing.JFrame {
             }
         });
 
-        bookAppointment.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        bookAppointment.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bookAppointment.setText("Book Appoiment");
         bookAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,25 +106,46 @@ public class VisitorAppointment extends javax.swing.JFrame {
             }
         });
 
+        expertise_jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        expertise_jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                expertise_jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        expertise_header1.setBackground(new java.awt.Color(0, 102, 102));
+        expertise_header1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        expertise_header1.setForeground(new java.awt.Color(255, 255, 255));
+        expertise_header1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        expertise_header1.setText("Expertise");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
             .add(jPanel1Layout.createSequentialGroup()
-                .add(486, 486, 486)
-                .add(bookAppointment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 313, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(1134, Short.MAX_VALUE)
+                        .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(bookAppointment)
+                        .add(18, 18, 18)
+                        .add(expertise_header1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .add(190, 190, 190)
-                .add(bookAppointment)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 289, Short.MAX_VALUE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(bookAppointment)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(expertise_header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 504, Short.MAX_VALUE)
                 .add(goBack)
                 .addContainerGap())
         );
@@ -136,8 +165,7 @@ public class VisitorAppointment extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .add(title, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,6 +184,14 @@ public class VisitorAppointment extends javax.swing.JFrame {
         parentSearch.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bookAppointmentActionPerformed
+
+    private void expertise_jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expertise_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Code : " + expertise_jComboBox1.getSelectedItem().toString());
+//        List<> myCourses = Data.enrolledCourses.stream()
+//                .filter(ec -> ec.getStudentID().equals(Data.currentLoggedStudent))
+//                .collect(Collectors.toList());
+    }//GEN-LAST:event_expertise_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,6 +246,8 @@ public class VisitorAppointment extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bookAppointment;
+    private javax.swing.JLabel expertise_header1;
+    private javax.swing.JComboBox<String> expertise_jComboBox1;
     private javax.swing.JButton goBack;
     private javax.swing.JLabel header;
     private javax.swing.JPanel jPanel1;

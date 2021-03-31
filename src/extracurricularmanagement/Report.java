@@ -48,11 +48,14 @@ public class Report extends javax.swing.JFrame {
 
         title = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         goBack = new javax.swing.JButton();
-        allLessonReport_jButton2 = new javax.swing.JButton();
-        visitorAppointmentReport_jButton1 = new javax.swing.JButton();
-        studentReport_jButton3 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        all_lesson_jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        visitor_appoinment_jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        student_report_jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -65,25 +68,6 @@ public class Report extends javax.swing.JFrame {
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         header.setText("Extra curricular course Managment");
 
-        org.jdesktop.layout.GroupLayout titleLayout = new org.jdesktop.layout.GroupLayout(title);
-        title.setLayout(titleLayout);
-        titleLayout.setHorizontalGroup(
-            titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, titleLayout.createSequentialGroup()
-                .addContainerGap(493, Short.MAX_VALUE)
-                .add(header)
-                .add(459, 459, 459))
-        );
-        titleLayout.setVerticalGroup(
-            titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, titleLayout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(header, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-
         goBack.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         goBack.setText("Go Back");
         goBack.addActionListener(new java.awt.event.ActionListener() {
@@ -92,77 +76,112 @@ public class Report extends javax.swing.JFrame {
             }
         });
 
-        allLessonReport_jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        allLessonReport_jButton2.setText("All lesson report");
-        allLessonReport_jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                allLessonReport_jButton2ActionPerformed(evt);
-            }
-        });
-
-        visitorAppointmentReport_jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        visitorAppointmentReport_jButton1.setText("Visitor Appointment Report");
-        visitorAppointmentReport_jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visitorAppointmentReport_jButton1ActionPerformed(evt);
-            }
-        });
-
-        studentReport_jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        studentReport_jButton3.setText("Student Report");
-        studentReport_jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentReport_jButton3ActionPerformed(evt);
-            }
-        });
-
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(1134, Short.MAX_VALUE)
+        org.jdesktop.layout.GroupLayout titleLayout = new org.jdesktop.layout.GroupLayout(title);
+        title.setLayout(titleLayout);
+        titleLayout.setHorizontalGroup(
+            titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, titleLayout.createSequentialGroup()
+                .addContainerGap()
                 .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(387, 387, 387)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(allLessonReport_jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 527, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(studentReport_jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 527, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(visitorAppointmentReport_jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 527, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(header)
+                .add(459, 459, 459))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(79, 79, 79)
-                .add(allLessonReport_jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 56, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(51, 51, 51)
-                .add(visitorAppointmentReport_jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 56, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(67, 67, 67)
-                .add(studentReport_jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 56, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 151, Short.MAX_VALUE)
-                .add(goBack)
+        titleLayout.setVerticalGroup(
+            titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, titleLayout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(header, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(goBack))
                 .addContainerGap())
         );
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("All Lesson Report");
+
+        org.jdesktop.layout.GroupLayout all_lesson_jPanel3Layout = new org.jdesktop.layout.GroupLayout(all_lesson_jPanel3);
+        all_lesson_jPanel3.setLayout(all_lesson_jPanel3Layout);
+        all_lesson_jPanel3Layout.setHorizontalGroup(
+            all_lesson_jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(all_lesson_jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel2)
+                .addContainerGap(1428, Short.MAX_VALUE))
+        );
+        all_lesson_jPanel3Layout.setVerticalGroup(
+            all_lesson_jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(all_lesson_jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel2)
+                .addContainerGap(503, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("All Lesson Report", all_lesson_jPanel3);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Visitor Appointment Report");
+
+        org.jdesktop.layout.GroupLayout visitor_appoinment_jPanel4Layout = new org.jdesktop.layout.GroupLayout(visitor_appoinment_jPanel4);
+        visitor_appoinment_jPanel4.setLayout(visitor_appoinment_jPanel4Layout);
+        visitor_appoinment_jPanel4Layout.setHorizontalGroup(
+            visitor_appoinment_jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(visitor_appoinment_jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel1)
+                .addContainerGap(1351, Short.MAX_VALUE))
+        );
+        visitor_appoinment_jPanel4Layout.setVerticalGroup(
+            visitor_appoinment_jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(visitor_appoinment_jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel1)
+                .addContainerGap(503, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Visitor Appointment Report", visitor_appoinment_jPanel4);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Student Report");
+
+        org.jdesktop.layout.GroupLayout student_report_jPanel2Layout = new org.jdesktop.layout.GroupLayout(student_report_jPanel2);
+        student_report_jPanel2.setLayout(student_report_jPanel2Layout);
+        student_report_jPanel2Layout.setHorizontalGroup(
+            student_report_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(student_report_jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel3)
+                .addContainerGap(1446, Short.MAX_VALUE))
+        );
+        student_report_jPanel2Layout.setVerticalGroup(
+            student_report_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(student_report_jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel3)
+                .addContainerGap(503, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Student Report", student_report_jPanel2);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(title, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(title, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(12, 12, 12))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1582, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(title, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 568, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,18 +193,6 @@ public class Report extends javax.swing.JFrame {
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_goBackActionPerformed
-
-    private void visitorAppointmentReport_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorAppointmentReport_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_visitorAppointmentReport_jButton1ActionPerformed
-
-    private void allLessonReport_jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allLessonReport_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_allLessonReport_jButton2ActionPerformed
-
-    private void studentReport_jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentReport_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_studentReport_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,13 +262,16 @@ public class Report extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton allLessonReport_jButton2;
+    private javax.swing.JPanel all_lesson_jPanel3;
     private javax.swing.JButton goBack;
     private javax.swing.JLabel header;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton studentReport_jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel student_report_jPanel2;
     private javax.swing.JPanel title;
-    private javax.swing.JButton visitorAppointmentReport_jButton1;
+    private javax.swing.JPanel visitor_appoinment_jPanel4;
     // End of variables declaration//GEN-END:variables
 
 }
