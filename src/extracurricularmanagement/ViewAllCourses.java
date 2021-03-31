@@ -52,7 +52,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
     public void addRowToJTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         List<Course> list = Data.courseList;
-        Object rowData[] = new Object[6];
+        Object rowData[] = new Object[7];
         for (int i = 0; i < list.size(); i++) {
             //courseID
             rowData[0] = list.get(i).getCourseID();
@@ -60,13 +60,14 @@ public class ViewAllCourses extends javax.swing.JFrame {
             rowData[1] = list.get(i).getCoachID();
             //course Name
             rowData[2] = list.get(i).getExpertise();
-            //date and time
-            rowData[3] = list.get(i).getClassDay() + " " + list.get(i).getClassTime();
+            //day 
+            rowData[3] = list.get(i).getClassDay();
+            //time
+            rowData[4] = list.get(i).getClassTime();
             //location
-            rowData[4] = list.get(i).getClassLocation();
+            rowData[5] = list.get(i).getClassLocation();
             //location
-            rowData[5] = list.get(i).getVacancies();
-
+            rowData[6] = list.get(i).getVacancies();
             model.addRow(rowData);
         }
     }
@@ -139,7 +140,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Course ID", "Coach Name", "Course Name", "Date and Time", "Location", "Vacance"
+                "Course ID", "Coach Name", "Course Name", "Day", "Time", "Location", "Vacance"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -237,8 +238,17 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
     private void enroll_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enroll_jButton1ActionPerformed
         // TODO add your handling code here:
-        int x = jTable1.getSelectionModel().getSelectionMode();
-        System.out.println("x : " + x);
+        int selectedRowIndex = jTable1.getSelectedRow();
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.getValueAt(selectedRowIndex, 0);
+        model.getValueAt(selectedRowIndex, 1);
+        model.getValueAt(selectedRowIndex, 2);
+        model.getValueAt(selectedRowIndex, 3);
+        model.getValueAt(selectedRowIndex, 4);
+
+//        jTable1.getMo
+        System.out.println("x : " + selectedRowIndex);
     }//GEN-LAST:event_enroll_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
