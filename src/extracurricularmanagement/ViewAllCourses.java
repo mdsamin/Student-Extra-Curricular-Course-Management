@@ -33,8 +33,10 @@ import extracurricularmanagement.data.Data;
 import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.EnrolledCourses;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -97,6 +99,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         expertise_header1 = new javax.swing.JLabel();
         expertise_jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -182,6 +185,13 @@ public class ViewAllCourses extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("MyCourses");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -198,6 +208,8 @@ public class ViewAllCourses extends javax.swing.JFrame {
                         .add(expertise_header1)
                         .add(60, 60, 60)
                         .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 206, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(97, 97, 97)
+                        .add(jButton1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(jButton2)))
                 .addContainerGap())
@@ -217,7 +229,9 @@ public class ViewAllCourses extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
                     .add(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jButton2)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jButton1)
+                            .add(jButton2))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 519, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -303,6 +317,25 @@ public class ViewAllCourses extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    String myCourseToShow = "";
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        List<EnrolledCourses> myCourses = Data.enrolledCourses.stream()
+                .filter(ec -> ec.getStudentID().equals(Data.currentLoggedStudent))
+                .collect(Collectors.toList());
+        myCourseToShow = "";
+        myCourses.forEach(ec -> {
+            myCourseToShow
+                    += "    Course Name : " + ec.getCourse().getExpertise()
+                    + "     Coach Name : " + ec.getCourse().getCoachID()
+                    + "     Time : " + ec.getCourse().getClassDay() + " " + ec.getCourse().getClassTime()
+                    + "     Location : " + ec.getCourse().getClassLocation()
+                    + ""
+                    + "\n-------------------------------------------------\n";
+        });
+        JOptionPane.showMessageDialog(rootPane, myCourseToShow);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -376,6 +409,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
     private javax.swing.JLabel expertise_header1;
     private javax.swing.JComboBox<String> expertise_jComboBox1;
     private javax.swing.JLabel header;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
