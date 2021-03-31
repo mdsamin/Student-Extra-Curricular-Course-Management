@@ -30,11 +30,10 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
-import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.EnrolledCourses;
-import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 public class ViewAllCourses extends javax.swing.JFrame {
@@ -69,6 +68,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
             rowData[5] = list.get(i).getClassLocation();
             //vacances
             rowData[6] = list.get(i).getVacancies();
+
             model.addRow(rowData);
         }
     }
@@ -239,25 +239,8 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
     private void enroll_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enroll_jButton1ActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = jTable1.getSelectedRow();
 
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        // courseID
-        String courseID = model.getValueAt(selectedRowIndex, 0).toString();
-        //coachName
-        String coachID = model.getValueAt(selectedRowIndex, 0).toString();
-        //courseName
-        String courseName = model.getValueAt(selectedRowIndex, 0).toString();
-        //day 
-        String day = model.getValueAt(selectedRowIndex, 0).toString();
-        //time
-        String time = model.getValueAt(selectedRowIndex, 0).toString();
-        //location
-        String location = model.getValueAt(selectedRowIndex, 0).toString();
-        //vacances
-        String vacances = model.getValueAt(selectedRowIndex, 0).toString();
-
-        Course course = new Course(coachID, courseID, courseName, location, day, time, vacances);
+        Course course = getSelectedCourse();
         System.out.println("course :" + course.toString());
 
         EnrolledCourses enrolledCourse = new EnrolledCourses(Data.currentLoggedStudent, course);
@@ -265,6 +248,30 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
         Data.enrolledCourses.forEach(ec -> System.out.println(ec.toString()));
     }//GEN-LAST:event_enroll_jButton1ActionPerformed
+
+    public Course getSelectedCourse() {
+        int selectedRowIndex = jTable1.getSelectedRow();
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        // courseID
+        String courseID = model.getValueAt(selectedRowIndex, 0).toString();
+        //coachName
+        String coachID = model.getValueAt(selectedRowIndex, 1).toString();
+        //courseName
+        String courseName = model.getValueAt(selectedRowIndex, 2).toString();
+        //day 
+        String day = model.getValueAt(selectedRowIndex, 3).toString();
+        //time
+        String time = model.getValueAt(selectedRowIndex, 4).toString();
+        //location
+        String location = model.getValueAt(selectedRowIndex, 5).toString();
+        //vacances
+        String vacances = model.getValueAt(selectedRowIndex, 6).toString();
+
+        Course course = new Course(coachID, courseID, courseName, location, day, time, vacances);
+        return course;
+    }
+
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
