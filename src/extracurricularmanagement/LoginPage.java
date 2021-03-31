@@ -183,7 +183,6 @@ public class LoginPage extends javax.swing.JFrame {
         StudentCreateAccountLogin studeintLoggin = new StudentCreateAccountLogin();
         studeintLoggin.setVisible(true);
         dispose();
-        System.out.println("Action Perfomred!");
     }//GEN-LAST:event_student_loginActionPerformed
 
     private void coach_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coach_loginActionPerformed

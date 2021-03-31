@@ -32,6 +32,7 @@ package extracurricularmanagement;
 import extracurricularmanagement.data.Data;
 import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Course;
+import extracurricularmanagement.model.EnrolledCourses;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -66,7 +67,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
             rowData[4] = list.get(i).getClassTime();
             //location
             rowData[5] = list.get(i).getClassLocation();
-            //location
+            //vacances
             rowData[6] = list.get(i).getVacancies();
             model.addRow(rowData);
         }
@@ -241,14 +242,28 @@ public class ViewAllCourses extends javax.swing.JFrame {
         int selectedRowIndex = jTable1.getSelectedRow();
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.getValueAt(selectedRowIndex, 0);
-        model.getValueAt(selectedRowIndex, 1);
-        model.getValueAt(selectedRowIndex, 2);
-        model.getValueAt(selectedRowIndex, 3);
-        model.getValueAt(selectedRowIndex, 4);
+        // courseID
+        String courseID = model.getValueAt(selectedRowIndex, 0).toString();
+        //coachName
+        String coachID = model.getValueAt(selectedRowIndex, 0).toString();
+        //courseName
+        String courseName = model.getValueAt(selectedRowIndex, 0).toString();
+        //day 
+        String day = model.getValueAt(selectedRowIndex, 0).toString();
+        //time
+        String time = model.getValueAt(selectedRowIndex, 0).toString();
+        //location
+        String location = model.getValueAt(selectedRowIndex, 0).toString();
+        //vacances
+        String vacances = model.getValueAt(selectedRowIndex, 0).toString();
 
-//        jTable1.getMo
-        System.out.println("x : " + selectedRowIndex);
+        Course course = new Course(coachID, courseID, courseName, location, day, time, vacances);
+        System.out.println("course :" + course.toString());
+
+        EnrolledCourses enrolledCourse = new EnrolledCourses(Data.currentLoggedStudent, course);
+        Data.enrolledCourses.add(enrolledCourse);
+
+        Data.enrolledCourses.forEach(ec -> System.out.println(ec.toString()));
     }//GEN-LAST:event_enroll_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
