@@ -17,13 +17,14 @@ import static extracurricularmanagement.data.GenerateData.generateCourseList;
  * @author Dell
  */
 public class Data {
-    
+
     public static int courseCount = 1;
     public static String currentLoggedCoach = "";
     public static List<Course> courseList = new ArrayList<>();
-    public static List<Student> studentsList = Arrays.asList(new Student[]{
-        new Student(1, "A", "015", "XX")
-    });
+    public static List<Student> studentsList = new ArrayList<>(Arrays.asList(
+            new Student(1, "A", "015", "XX"),
+            new Student(2, "B", "016", "YY")
+    ));
     public static List<String> coachList = Arrays.asList(new String[]{
         "Kevin Oens", "Ellen", "Pitbull", "david beckham"
     });

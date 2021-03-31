@@ -372,10 +372,8 @@ public class StudentCreateAccountLogin extends javax.swing.JFrame {
         } else {
             Student student = new Student(new Random().nextInt(1000) + 1, name, phone, address);
             Data.studentsList.add(student);
-            StudentCreateAccountSuccess success = new StudentCreateAccountSuccess();
-            success.setID(student.getId());
-            success.setVisible(true);
-            this.dispose();
+            JOptionPane.showMessageDialog(rootPane, "Account Created Successfully!"
+                    + "\n ID : " + student.getId());
         }
     }//GEN-LAST:event_crearteAccount_jButton2ActionPerformed
 

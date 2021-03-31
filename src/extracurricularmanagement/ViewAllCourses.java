@@ -87,7 +87,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        enroll_jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         expertise_header1 = new javax.swing.JLabel();
         expertise_jComboBox1 = new javax.swing.JComboBox<>();
@@ -148,10 +148,10 @@ public class ViewAllCourses extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Enroll to Join");
 
-        jButton1.setText("Enroll");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        enroll_jButton1.setText("Enroll");
+        enroll_jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                enroll_jButton1ActionPerformed(evt);
             }
         });
 
@@ -187,7 +187,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 158, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(60, 60, 60)
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(enroll_jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(50, 50, 50)
                         .add(expertise_header1)
                         .add(60, 60, 60)
@@ -205,7 +205,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(enroll_jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .add(expertise_header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
@@ -235,9 +235,11 @@ public class ViewAllCourses extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void enroll_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enroll_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        int x = jTable1.getSelectionModel().getSelectionMode();
+        System.out.println("x : " + x);
+    }//GEN-LAST:event_enroll_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -326,10 +328,10 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton enroll_jButton1;
     private javax.swing.JLabel expertise_header1;
     private javax.swing.JComboBox<String> expertise_jComboBox1;
     private javax.swing.JLabel header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
