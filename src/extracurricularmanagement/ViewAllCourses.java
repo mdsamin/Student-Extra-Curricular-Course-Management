@@ -30,10 +30,13 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
+import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.EnrolledCourses;
 import java.util.List;
+import java.util.Optional;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ViewAllCourses extends javax.swing.JFrame {
@@ -45,6 +48,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
      */
     public ViewAllCourses() {
         initComponents();
+        GenerateData.generateCourseList();
         addRowToJTable();
         Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
     }
@@ -241,12 +245,20 @@ public class ViewAllCourses extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Course course = getSelectedCourse();
-        System.out.println("course :" + course.toString());
 
-        EnrolledCourses enrolledCourse = new EnrolledCourses(Data.currentLoggedStudent, course);
-        Data.enrolledCourses.add(enrolledCourse);
-
-        Data.enrolledCourses.forEach(ec -> System.out.println(ec.toString()));
+        Optional<EnrolledCourses> enrollCourseOptional = Data.enrolledCourses.stream()
+                .filter(ec -> ec.getCourse().getClassDay().equals(course.getClassDay()) && ec.getCourse().getClassTime().equals(course.getClassTime()))
+                .findFirst();
+        System.out.println("enrollCourseOptional : " + enrollCourseOptional.toString());
+        if (enrollCourseOptional.isPresent()) {
+            JOptionPane.showMessageDialog(rootPane, "Sorry, you have another class at the same time!");
+        } else {
+            System.out.println("course :" + course.toString());
+            EnrolledCourses enrolledCourse = new EnrolledCourses(Data.currentLoggedStudent, course);
+            Data.enrolledCourses.add(enrolledCourse);
+            Data.enrolledCourses.forEach(ec -> System.out.println(ec.toString()));
+            JOptionPane.showMessageDialog(rootPane, "Course Add successful!");
+        }
     }//GEN-LAST:event_enroll_jButton1ActionPerformed
 
     public Course getSelectedCourse() {
