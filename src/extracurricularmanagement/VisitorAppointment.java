@@ -30,9 +30,15 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
+import extracurricularmanagement.data.GenerateData;
+import extracurricularmanagement.model.Appoinment;
+import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.EnrolledCourses;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class VisitorAppointment extends javax.swing.JFrame {
 
@@ -40,8 +46,11 @@ public class VisitorAppointment extends javax.swing.JFrame {
      * Creates new form Antenna
      */
     public VisitorAppointment() {
+        //TODO: delete
+//        GenerateData.generateCourseList();
         initComponents();
         Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
+        Data.coachList.forEach(c -> coachList_jComboBox1.addItem(c));
     }
 
     /**
@@ -55,10 +64,18 @@ public class VisitorAppointment extends javax.swing.JFrame {
         title = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        goBack = new javax.swing.JButton();
-        bookAppointment = new javax.swing.JButton();
-        expertise_jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        enroll_jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         expertise_header1 = new javax.swing.JLabel();
+        expertise_jComboBox1 = new javax.swing.JComboBox<>();
+        classDay_jComboBox4 = new javax.swing.JComboBox<>();
+        classTime_jComboBox6 = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        visitorName_jTextField1 = new javax.swing.JTextField();
+        coachList_jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -90,63 +107,127 @@ public class VisitorAppointment extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        goBack.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        goBack.setText("Go Back");
-        goBack.addActionListener(new java.awt.event.ActionListener() {
+        jTable2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Course ID", "Coach Name", "Course Name", "Day", "Time", "Location", "Vacance"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        enroll_jButton2.setText("Book Appoinment");
+        enroll_jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBackActionPerformed(evt);
+                enroll_jButton2ActionPerformed(evt);
             }
         });
 
-        bookAppointment.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bookAppointment.setText("Book Appoiment");
-        bookAppointment.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton3.setText("Go Back");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bookAppointmentActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        expertise_jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        expertise_header1.setBackground(new java.awt.Color(0, 102, 102));
+        expertise_header1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        expertise_header1.setForeground(new java.awt.Color(255, 255, 255));
+        expertise_header1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        expertise_header1.setText("Expertise");
+
+        expertise_jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        expertise_jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
         expertise_jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 expertise_jComboBox1ActionPerformed(evt);
             }
         });
 
-        expertise_header1.setBackground(new java.awt.Color(0, 102, 102));
-        expertise_header1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        expertise_header1.setForeground(new java.awt.Color(255, 255, 255));
-        expertise_header1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        expertise_header1.setText("Expertise");
+        classDay_jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        classDay_jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
+        classDay_jComboBox4.setAutoscrolls(true);
+        classDay_jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classDay_jComboBox4ActionPerformed(evt);
+            }
+        });
+
+        classTime_jComboBox6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        classTime_jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "09:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "" }));
+        classTime_jComboBox6.setAutoscrolls(true);
+        classTime_jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classTime_jComboBox6ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Load All course Time");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Visitor Name : ");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(1134, Short.MAX_VALUE)
-                        .add(goBack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 178, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(bookAppointment)
+                        .add(enroll_jButton2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jLabel1)
                         .add(18, 18, 18)
+                        .add(visitorName_jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 432, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(coachList_jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(classDay_jComboBox4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(classTime_jComboBox6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(155, 155, 155)
+                        .add(jButton3))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jButton4)
+                        .add(30, 30, 30)
                         .add(expertise_header1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 206, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(bookAppointment)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(expertise_header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 504, Short.MAX_VALUE)
-                .add(goBack)
+                        .add(jButton3)
+                        .add(jLabel1)
+                        .add(visitorName_jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(enroll_jButton2))
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(classTime_jComboBox6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(classDay_jComboBox4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(coachList_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(18, 18, 18)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(expertise_header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButton4))
+                .add(0, 20, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 466, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -155,43 +236,110 @@ public class VisitorAppointment extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(title, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(title, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(12, 12, 12))
+            .add(layout.createSequentialGroup()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(title, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void goBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackActionPerformed
+    private void enroll_jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enroll_jButton2ActionPerformed
         // TODO add your handling code here:
-        LoginPage home = new LoginPage();
-        home.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_goBackActionPerformed
+        String visitorName = visitorName_jTextField1.getText().toString();
+        if (visitorName.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Please Enter visitor Name!");
+        } else {
+            String coachName = coachList_jComboBox1.getSelectedItem().toString();
+            String time = classTime_jComboBox6.getSelectedItem().toString();
+            String day = classDay_jComboBox4.getSelectedItem().toString();
 
-    private void bookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookAppointmentActionPerformed
+            Appoinment appoinment = new Appoinment(coachName, visitorName, time, day);
+
+            Optional<Appoinment> appoinmentSearch = Data.appoinments.stream()
+                    .filter(a -> a.getDay().equals(day) && a.getTime().equals(time) && a.getVisitorName().equals(visitorName))
+                    .findFirst();
+            if (appoinmentSearch.isPresent()) {
+                JOptionPane.showMessageDialog(rootPane, "Sorry Not Possibe, time schedule already booked!");
+            } else {
+                Data.appoinments.add(appoinment);
+                Data.appoinments.forEach(a -> System.out.println(a.toString()));
+            }
+        }
+    }//GEN-LAST:event_enroll_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        SearchInstructorToBookApoinment parentSearch = new SearchInstructorToBookApoinment();
-        parentSearch.setVisible(true);
+        SearchCourseToJoin searchCourseToJoin = new SearchCourseToJoin();
+        searchCourseToJoin.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_bookAppointmentActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void expertise_jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expertise_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("Code : " + expertise_jComboBox1.getSelectedItem().toString());
-//        List<> myCourses = Data.enrolledCourses.stream()
-//                .filter(ec -> ec.getStudentID().equals(Data.currentLoggedStudent))
-//                .collect(Collectors.toList());
+        String selectedCourse = expertise_jComboBox1.getSelectedItem().toString();
+        System.out.println("selectedCourse : " + selectedCourse);
+        if (selectedCourse.equals("All")) {
+            DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setRowCount(0);
+            showDataToJTable(Data.courseList);
+        } else {
+            List<Course> searchCourse = Data.courseList.stream()
+                    .filter(c -> c.getExpertise().equals(selectedCourse))
+                    .collect(Collectors.toList());
+            DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setRowCount(0);
+            showDataToJTable(searchCourse);
+        }
     }//GEN-LAST:event_expertise_jComboBox1ActionPerformed
+
+    private void classDay_jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classDay_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_classDay_jComboBox4ActionPerformed
+
+    private void classTime_jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classTime_jComboBox6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_classTime_jComboBox6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        GenerateData.generateCourseList();
+        showDataToJTable(Data.courseList);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    public void showDataToJTable(List<Course> courses) {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        List<Course> list = courses;
+        Object rowData[] = new Object[7];
+        for (int i = 0; i < list.size(); i++) {
+            //courseID
+            rowData[0] = list.get(i).getCourseID();
+            //coachName
+            rowData[1] = list.get(i).getCoachID();
+            //course Name
+            rowData[2] = list.get(i).getExpertise();
+            //day 
+            rowData[3] = list.get(i).getClassDay();
+            //time
+            rowData[4] = list.get(i).getClassTime();
+            //location
+            rowData[5] = list.get(i).getClassLocation();
+            //vacances
+            rowData[6] = list.get(i).getVacancies();
+
+            model.addRow(rowData);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -245,13 +393,31 @@ public class VisitorAppointment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bookAppointment;
+    private javax.swing.JComboBox<String> classDay_jComboBox3;
+    private javax.swing.JComboBox<String> classDay_jComboBox4;
+    private javax.swing.JComboBox<String> classTime_jComboBox5;
+    private javax.swing.JComboBox<String> classTime_jComboBox6;
+    private javax.swing.JComboBox<String> coachList_jComboBox1;
+    private javax.swing.JButton enroll_jButton1;
+    private javax.swing.JButton enroll_jButton2;
     private javax.swing.JLabel expertise_header1;
+    private javax.swing.JLabel expertise_header2;
     private javax.swing.JComboBox<String> expertise_jComboBox1;
-    private javax.swing.JButton goBack;
+    private javax.swing.JComboBox<String> expertise_jComboBox2;
     private javax.swing.JLabel header;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPanel title;
+    private javax.swing.JTextField visitorName_jTextField1;
     // End of variables declaration//GEN-END:variables
 
 }

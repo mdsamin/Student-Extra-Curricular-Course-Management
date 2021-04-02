@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 import static extracurricularmanagement.data.GenerateData.generateCourseList;
+import extracurricularmanagement.model.Appoinment;
 import extracurricularmanagement.model.EnrolledCourses;
 
 /**
@@ -23,6 +24,7 @@ public class Data {
     public static String currentLoggedCoach = "";
     public static String currentLoggedStudent = "";
     public static List<Course> courseList = new ArrayList<>();
+    public static List<Appoinment> appoinments = new ArrayList<>();
     public static List<EnrolledCourses> enrolledCourses = new ArrayList<>();
     public static List<Student> studentsList = new ArrayList<>(Arrays.asList(
             new Student(1, "A", "015", "XX"),
