@@ -7,6 +7,7 @@ package extracurricularmanagement.data;
 
 import static extracurricularmanagement.data.Data.courseCount;
 import extracurricularmanagement.model.Course;
+import extracurricularmanagement.model.EnrolledCourses;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -51,14 +52,19 @@ public class GenerateData {
             getVacance())
         });
 
-        courses.forEach(c -> {
-            Data.courseList.add(c);
-        });
-
+        courses.forEach(c -> Data.courseList.add(c));
     }
 
     public static String getVacance() {
         return Integer.toString(1 + new Random().nextInt(20));
     }
 
+    public static void generateEnrollCourse() {
+        List<EnrolledCourses> courses = Arrays.asList(new EnrolledCourses[]{
+            new EnrolledCourses("1", Data.courseList.get(0)),
+            new EnrolledCourses("1", Data.courseList.get(1)),
+            new EnrolledCourses("2", Data.courseList.get(2)),
+            new EnrolledCourses("2", Data.courseList.get(3))
+        });
+    }
 }

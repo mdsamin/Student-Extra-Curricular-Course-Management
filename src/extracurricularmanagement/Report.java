@@ -29,6 +29,12 @@
  */
 package extracurricularmanagement;
 
+import extracurricularmanagement.data.Data;
+import extracurricularmanagement.data.GenerateData;
+import extracurricularmanagement.model.Course;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 public class Report extends javax.swing.JFrame {
 
     /**
@@ -52,6 +58,9 @@ public class Report extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         all_lesson_jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        refresh_jButton1 = new javax.swing.JButton();
         visitor_appoinment_jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         student_report_jPanel2 = new javax.swing.JPanel();
@@ -100,21 +109,43 @@ public class Report extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("All Lesson Report");
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Course ID", "Coach Name", "Course Name", "Date and Time", "Location", "Total Enrolled"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        refresh_jButton1.setText("Refresh");
+        refresh_jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refresh_jButton1ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout all_lesson_jPanel3Layout = new org.jdesktop.layout.GroupLayout(all_lesson_jPanel3);
         all_lesson_jPanel3.setLayout(all_lesson_jPanel3Layout);
         all_lesson_jPanel3Layout.setHorizontalGroup(
             all_lesson_jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(all_lesson_jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .add(jLabel2)
-                .addContainerGap(1428, Short.MAX_VALUE))
+                .add(18, 18, 18)
+                .add(refresh_jButton1)
+                .add(0, 0, Short.MAX_VALUE))
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1577, Short.MAX_VALUE)
         );
         all_lesson_jPanel3Layout.setVerticalGroup(
             all_lesson_jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(all_lesson_jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel2)
-                .addContainerGap(503, Short.MAX_VALUE))
+                .add(all_lesson_jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(refresh_jButton1))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 507, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("All Lesson Report", all_lesson_jPanel3);
@@ -194,6 +225,36 @@ public class Report extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_goBackActionPerformed
 
+    private void refresh_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh_jButton1ActionPerformed
+        // TODO add your handling code here:
+//        GenerateData.generateCourseList();
+        addRowToJTable();
+    }//GEN-LAST:event_refresh_jButton1ActionPerformed
+
+    public void addRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        List<Course> list = Data.courseList;
+        Object rowData[] = new Object[7];
+        for (int i = 0; i < list.size(); i++) {
+            //courseID
+            rowData[0] = list.get(i).getCourseID();
+            //coachName
+            rowData[1] = list.get(i).getCoachID();
+            //course Name
+            rowData[2] = list.get(i).getExpertise();
+            //day 
+            rowData[3] = list.get(i).getClassDay();
+            //time
+            rowData[4] = list.get(i).getClassTime();
+            //location
+            rowData[5] = list.get(i).getClassLocation();
+            //vacances
+            rowData[6] = list.get(i).getVacancies();
+
+            model.addRow(rowData);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -268,7 +329,10 @@ public class Report extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton refresh_jButton1;
     private javax.swing.JPanel student_report_jPanel2;
     private javax.swing.JPanel title;
     private javax.swing.JPanel visitor_appoinment_jPanel4;

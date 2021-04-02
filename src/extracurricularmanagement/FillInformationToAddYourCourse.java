@@ -210,7 +210,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         vacancies_header7.setAutoscrolls(true);
 
         vacancies_jComboBox5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        vacancies_jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "7", "10", "10", "20", "20", "20" }));
+        vacancies_jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
         vacancies_jComboBox5.setAutoscrolls(true);
         vacancies_jComboBox5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
