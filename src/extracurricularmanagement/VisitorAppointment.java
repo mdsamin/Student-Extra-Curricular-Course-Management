@@ -266,14 +266,32 @@ public class VisitorAppointment extends javax.swing.JFrame {
 
             Appoinment appoinment = new Appoinment(coachName, visitorName, time, day);
 
-            Optional<Appoinment> appoinmentSearch = Data.appoinments.stream()
+            Optional<Appoinment> appoinmentDuplicate = Data.appoinments.stream()
                     .filter(a -> a.getDay().equals(day) && a.getTime().equals(time) && a.getVisitorName().equals(visitorName))
                     .findFirst();
-            if (appoinmentSearch.isPresent()) {
-                JOptionPane.showMessageDialog(rootPane, "Sorry Not Possibe, time schedule already booked!");
+
+            //TODO: have to use one filter chain!
+            Optional<Appoinment> appoinmentCoachExist = Data.appoinments.stream()
+                    .filter(a -> a.getDay().equals(day) && a.getTime().equals(time) && a.getCoachName().equals(coachName))
+                    .findFirst();
+
+            //TODO: have to  move them into separate method
+            Optional<Course> courseOptional = Data.courseList.stream()
+                    .filter(c -> c.getClassDay().equals(day) && c.getClassTime().equals(time))
+                    .findFirst();
+
+            if (appoinmentDuplicate.isPresent() || appoinmentCoachExist.isPresent() || courseOptional.isPresent()) {
+                if (appoinmentDuplicate.isPresent()) {
+                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possibe, You have already an appoinment on the same time!");
+                } else if (appoinmentCoachExist.isPresent()) {
+                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possibe, coach already an appoinment on the same day and time.");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possibe, coach has clas on the same time!.");
+                }
             } else {
                 Data.appoinments.add(appoinment);
                 Data.appoinments.forEach(a -> System.out.println(a.toString()));
+                JOptionPane.showMessageDialog(rootPane, "Appoinment confirmed successful!");
             }
         }
     }//GEN-LAST:event_enroll_jButton2ActionPerformed
