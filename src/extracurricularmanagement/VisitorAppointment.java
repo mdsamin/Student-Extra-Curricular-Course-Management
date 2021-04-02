@@ -282,11 +282,11 @@ public class VisitorAppointment extends javax.swing.JFrame {
 
             if (appoinmentDuplicate.isPresent() || appoinmentCoachExist.isPresent() || courseOptional.isPresent()) {
                 if (appoinmentDuplicate.isPresent()) {
-                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possibe, You have already an appoinment on the same time!");
+                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, You have already an appointment on the same time!");
                 } else if (appoinmentCoachExist.isPresent()) {
-                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possibe, coach already an appoinment on the same day and time.");
+                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, coach already an appointment on the same day and time.");
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possibe, coach has clas on the same time!.");
+                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, coach has clas on the same time!.");
                 }
             } else {
                 Data.appoinments.add(appoinment);
