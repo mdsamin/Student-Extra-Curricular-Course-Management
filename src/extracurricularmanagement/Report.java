@@ -115,7 +115,7 @@ public class Report extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Course ID", "Coach Name", "Course Name", "Date and Time", "Location", "Total Enrolled"
+                "Course ID", "Coach Name", "Course Name", "Day", "Time", "Location", "Total Enrolled"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -228,6 +228,7 @@ public class Report extends javax.swing.JFrame {
     private void refresh_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh_jButton1ActionPerformed
         // TODO add your handling code here:
 //        GenerateData.generateCourseList();
+        GenerateData.generateCourseList();
         addRowToJTable();
     }//GEN-LAST:event_refresh_jButton1ActionPerformed
 

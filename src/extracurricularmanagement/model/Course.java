@@ -20,6 +20,7 @@ public class Course {
     private String classDay;
     private String classTime;
     private String vacancies;
+    private int enrolled;
 
     public Course() {
     }
@@ -90,8 +91,16 @@ public class Course {
         this.vacancies = vacancies;
     }
 
+    public int getEnrolled() {
+        return enrolled;
+    }
+
+    public void setEnrolled(int enrolled) {
+        this.enrolled = enrolled;
+    }
+
     @Override
     public String toString() {
-        return "Course{" + "coachID=" + coachID + ", courseID=" + courseID + ", expertise=" + expertise + ", classLocation=" + classLocation + ", classDay=" + classDay + ", classTime=" + classTime + ", vacancies=" + vacancies + '}';
+        return "Course{" + "coachID=" + coachID + ", courseID=" + courseID + ", expertise=" + expertise + ", classLocation=" + classLocation + ", classDay=" + classDay + ", classTime=" + classTime + ", vacancies=" + vacancies + ", enrolled=" + enrolled + '}';
     }
 }
