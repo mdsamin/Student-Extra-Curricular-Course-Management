@@ -51,13 +51,13 @@ public class ViewAllCourses extends javax.swing.JFrame {
     public ViewAllCourses() {
         initComponents();
         GenerateData.generateCourseList();
-        addRowToJTable();
         Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
+        showDataToJTable(Data.courseList);
     }
 
-    public void addRowToJTable() {
+    public void showDataToJTable(List<Course> courses) {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        List<Course> list = Data.courseList;
+        List<Course> list = courses;
         Object rowData[] = new Object[7];
         for (int i = 0; i < list.size(); i++) {
             //courseID
@@ -94,12 +94,13 @@ public class ViewAllCourses extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         enroll_jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         expertise_header1 = new javax.swing.JLabel();
         expertise_jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        classDay_jComboBox3 = new javax.swing.JComboBox<>();
+        classTime_jComboBox5 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -153,10 +154,6 @@ public class ViewAllCourses extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Enroll to Join");
-
         enroll_jButton1.setText("Enroll");
         enroll_jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +176,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         expertise_header1.setText("Expertise");
 
         expertise_jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        expertise_jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
         expertise_jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 expertise_jComboBox1ActionPerformed(evt);
@@ -192,6 +190,24 @@ public class ViewAllCourses extends javax.swing.JFrame {
             }
         });
 
+        classDay_jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        classDay_jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
+        classDay_jComboBox3.setAutoscrolls(true);
+        classDay_jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classDay_jComboBox3ActionPerformed(evt);
+            }
+        });
+
+        classTime_jComboBox5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        classTime_jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "10:00-11:00", "11:00-12:00", "12:00-13:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "10:00-11:00" }));
+        classTime_jComboBox5.setAutoscrolls(true);
+        classTime_jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classTime_jComboBox5ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -201,15 +217,17 @@ public class ViewAllCourses extends javax.swing.JFrame {
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1276, Short.MAX_VALUE)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 158, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(60, 60, 60)
-                        .add(enroll_jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(50, 50, 50)
-                        .add(expertise_header1)
-                        .add(60, 60, 60)
-                        .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 206, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(97, 97, 97)
                         .add(jButton1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(enroll_jButton1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(expertise_header1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 206, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(jButton2)))
                 .addContainerGap())
@@ -217,22 +235,24 @@ public class ViewAllCourses extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jButton1)
+                        .add(enroll_jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(0, 1, Short.MAX_VALUE)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(expertise_header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(8, 8, 8)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jButton2)
                             .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                .add(enroll_jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(expertise_header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jButton1)
-                            .add(jButton2))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 519, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -308,6 +328,22 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
     private void expertise_jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expertise_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        String selectedCourse = expertise_jComboBox1.getSelectedItem().toString();
+        System.out.println("selectedCourse : " + selectedCourse);
+        if (selectedCourse.equals("All")) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            showDataToJTable(Data.courseList);
+        } else {
+            List<Course> searchCourse = Data.courseList.stream()
+                    .filter(c -> c.getExpertise().equals(selectedCourse))
+                    .collect(Collectors.toList());
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            System.out.println("Making Table Void!");
+            showDataToJTable(searchCourse);
+        }
     }//GEN-LAST:event_expertise_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -335,6 +371,44 @@ public class ViewAllCourses extends javax.swing.JFrame {
         });
         JOptionPane.showMessageDialog(rootPane, myCourseToShow);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void classDay_jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classDay_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+        String classDay = classDay_jComboBox3.getSelectedItem().toString();
+        System.out.println(" classDay : " + classDay);
+        if (classDay.equals("All")) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            showDataToJTable(Data.courseList);
+        } else {
+            List<Course> searchCourse = Data.courseList.stream()
+                    .filter(c -> c.getClassDay().equals(classDay))
+                    .collect(Collectors.toList());
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            showDataToJTable(searchCourse);
+        }
+    }//GEN-LAST:event_classDay_jComboBox3ActionPerformed
+
+    private void classTime_jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classTime_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+        String classTime = classTime_jComboBox5.getSelectedItem().toString();
+        System.out.println(" classDay : " + classTime);
+        if (classTime.equals("All")) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            showDataToJTable(Data.courseList);
+        } else {
+            List<Course> searchCourse = Data.courseList.stream()
+                    .filter(c -> c.getClassTime().equals(classTime))
+                    .collect(Collectors.toList());
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            showDataToJTable(searchCourse);
+        }
+    }//GEN-LAST:event_classTime_jComboBox5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,6 +479,8 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> classDay_jComboBox3;
+    private javax.swing.JComboBox<String> classTime_jComboBox5;
     private javax.swing.JButton enroll_jButton1;
     private javax.swing.JLabel expertise_header1;
     private javax.swing.JComboBox<String> expertise_jComboBox1;
@@ -412,7 +488,6 @@ public class ViewAllCourses extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
