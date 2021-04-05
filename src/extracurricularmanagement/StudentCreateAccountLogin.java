@@ -336,11 +336,12 @@ public class StudentCreateAccountLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_address_jTextField3ActionPerformed
 
     private void logging_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logging_jButton1ActionPerformed
-        // TODO add your handling code here:
+       //TODO: delete
         System.out.println("Loggin List Size : " + Data.studentsList.size());
         Data.studentsList.forEach(s -> {
             System.out.println(s.toString());
         });
+        
         if (!loggingID_TextField.getText().toString().isEmpty()) {
             int inputId = Integer.parseInt(loggingID_TextField.getText().toString());
             Optional<Student> student = Data.studentsList.stream().filter(s -> s.getId() == inputId).findAny();

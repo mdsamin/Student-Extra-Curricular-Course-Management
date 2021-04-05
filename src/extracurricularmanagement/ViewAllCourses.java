@@ -49,8 +49,10 @@ public class ViewAllCourses extends javax.swing.JFrame {
      * Creates new form Antenna
      */
     public ViewAllCourses() {
+        //TODO: delete
+        System.out.println("CurrentLy Logged user : " + Data.currentLoggedStudent.toString());
+        
         initComponents();
-        GenerateData.generateCourseList();
         Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
         showDataToJTable(Data.courseList);
     }
@@ -101,6 +103,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         classDay_jComboBox3 = new javax.swing.JComboBox<>();
         classTime_jComboBox5 = new javax.swing.JComboBox<>();
+        loadCourses_jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -208,6 +211,13 @@ public class ViewAllCourses extends javax.swing.JFrame {
             }
         });
 
+        loadCourses_jButton4.setText("Load Courses");
+        loadCourses_jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadCourses_jButton4ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -228,6 +238,8 @@ public class ViewAllCourses extends javax.swing.JFrame {
                         .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(79, 79, 79)
+                        .add(loadCourses_jButton4)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(jButton2)))
                 .addContainerGap())
@@ -250,7 +262,8 @@ public class ViewAllCourses extends javax.swing.JFrame {
                             .add(jButton2)
                             .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                                 .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                                .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(loadCourses_jButton4)))
                         .add(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 519, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -410,6 +423,12 @@ public class ViewAllCourses extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_classTime_jComboBox5ActionPerformed
 
+    private void loadCourses_jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCourses_jButton4ActionPerformed
+        // TODO add your handling code here:
+        GenerateData.generateCourseList();
+        showDataToJTable(Data.courseList);
+    }//GEN-LAST:event_loadCourses_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -491,6 +510,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton loadCourses_jButton4;
     private javax.swing.JPanel title;
     // End of variables declaration//GEN-END:variables
 
