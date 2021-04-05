@@ -41,7 +41,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ViewAllCourses extends javax.swing.JFrame {
-
+    
     boolean firstTime = true;
 
     /**
@@ -50,12 +50,12 @@ public class ViewAllCourses extends javax.swing.JFrame {
     public ViewAllCourses() {
         //TODO: delete
         System.out.println("CurrentLy Logged user : " + Data.currentLoggedStudent.toString());
-
+        
         initComponents();
         Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
         showAllCoursesToJTable(Data.courseList);
     }
-
+    
     public void showAllCoursesToJTable(List<Course> courses) {
         DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
         List<Course> list = courses;
@@ -75,11 +75,11 @@ public class ViewAllCourses extends javax.swing.JFrame {
             rowData[5] = list.get(i).getClassLocation();
             //vacances
             rowData[6] = list.get(i).getVacancies();
-
+            
             model.addRow(rowData);
         }
     }
-
+    
     public void showMyCoursesToJTable(List<Course> courses) {
         DefaultTableModel model = (DefaultTableModel) myCourses_jTable2.getModel();
         List<Course> list = courses;
@@ -99,7 +99,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
             rowData[5] = list.get(i).getClassLocation();
             //vacances
             rowData[6] = list.get(i).getVacancies();
-
+            
             model.addRow(rowData);
         }
     }
@@ -356,29 +356,46 @@ public class ViewAllCourses extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Course course = getSelectedCourse();
-
-        Optional<EnrolledCourses> enrollCourseOptional = Data.enrolledCourses.stream()
-                .filter(
-                        ec -> ec.getCourse().getClassDay().equals(course.getClassDay())
-                        && ec.getCourse().getClassTime().equals(course.getClassTime())
-                        && ec.getStudentID().equals(Data.currentLoggedStudent)
-                )
-                .findFirst();
-        System.out.println("enrollCourseOptional : " + enrollCourseOptional.toString());
-        if (enrollCourseOptional.isPresent()) {
-            JOptionPane.showMessageDialog(rootPane, "Sorry, you have another class at the same time!");
+        
+        if (course.getVacancies() <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "Sorry, No Vacancy!");
         } else {
-            System.out.println("course :" + course.toString());
-            EnrolledCourses enrolledCourse = new EnrolledCourses(Data.currentLoggedStudent, course);
-            Data.enrolledCourses.add(enrolledCourse);
-            Data.enrolledCourses.forEach(ec -> System.out.println(ec.toString()));
-            JOptionPane.showMessageDialog(rootPane, "Course Add successful!");
+            Optional<EnrolledCourses> enrollCourseOptional = Data.enrolledCourses.stream()
+                    .filter(
+                            ec -> ec.getCourse().getClassDay().equals(course.getClassDay())
+                            && ec.getCourse().getClassTime().equals(course.getClassTime())
+                            && ec.getStudentID().equals(Data.currentLoggedStudent)
+                    )
+                    .findFirst();
+            System.out.println("enrollCourseOptional : " + enrollCourseOptional.toString());
+            if (enrollCourseOptional.isPresent()) {
+                JOptionPane.showMessageDialog(rootPane, "Sorry, you have another class at the same time!");
+            } else {
+                System.out.println("course :" + course.toString());
+                
+                EnrolledCourses enrolledCourse = new EnrolledCourses(Data.currentLoggedStudent, course);
+                Data.enrolledCourses.add(enrolledCourse);
+                Data.courseList.forEach(c -> {
+                    if (c.getCourseID().equals(course.getCourseID())) {
+                        int vacancy = c.getVacancies();
+                        c.setVacancies(--vacancy);
+                    }
+                });
+                //TODO: clean
+                Data.enrolledCourses.forEach(ec -> System.out.println(ec.toString()));
+                JOptionPane.showMessageDialog(rootPane, "Course Add successful!");
+                DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
+                model.setRowCount(0);
+                showAllCoursesToJTable(Data.courseList);
+            }
         }
-    }//GEN-LAST:event_enroll_jButton1ActionPerformed
+        
 
+    }//GEN-LAST:event_enroll_jButton1ActionPerformed
+    
     public Course getSelectedCourse() {
         int selectedRowIndex = allCourses_jTable1.getSelectedRow();
-
+        
         DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
         // courseID
         String courseID = model.getValueAt(selectedRowIndex, 0).toString();
@@ -394,14 +411,14 @@ public class ViewAllCourses extends javax.swing.JFrame {
         String location = model.getValueAt(selectedRowIndex, 5).toString();
         //vacances
         String vacances = model.getValueAt(selectedRowIndex, 6).toString();
-
+        
         Course course = new Course(coachID, courseID, courseName, location, day, time, Integer.parseInt(vacances));
         return course;
     }
-
+    
     public Course getSelectedMyCourse() {
         int selectedRowIndex = myCourses_jTable2.getSelectedRow();
-
+        
         DefaultTableModel model = (DefaultTableModel) myCourses_jTable2.getModel();
         // courseID
         String courseID = model.getValueAt(selectedRowIndex, 0).toString();
@@ -421,7 +438,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         Course course = new Course(coachID, courseID, courseName, location, day, time, 0);
         return course;
     }
-
+    
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -442,7 +459,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
             List<Course> searchCourse = Data.courseList.stream()
                     .filter(c -> c.getExpertise().equals(selectedCourse))
                     .collect(Collectors.toList());
-
+            
             DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
             model.setRowCount(0);
             System.out.println("Making Table Void!");
@@ -456,7 +473,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         loginPage.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     String myCourseToShow = "";
     private void classDay_jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classDay_jComboBox3ActionPerformed
         // TODO add your handling code here:
@@ -470,7 +487,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
             List<Course> searchCourse = Data.courseList.stream()
                     .filter(c -> c.getClassDay().equals(classDay))
                     .collect(Collectors.toList());
-
+            
             DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
             model.setRowCount(0);
             showAllCoursesToJTable(searchCourse);
@@ -489,7 +506,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
             List<Course> searchCourse = Data.courseList.stream()
                     .filter(c -> c.getClassTime().equals(classTime))
                     .collect(Collectors.toList());
-
+            
             DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
             model.setRowCount(0);
             showAllCoursesToJTable(searchCourse);
@@ -519,14 +536,14 @@ public class ViewAllCourses extends javax.swing.JFrame {
     private void cancel_jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_jButton5ActionPerformed
         // TODO add your handling code here:
         Course course = getSelectedMyCourse();
-
+        
         Optional<EnrolledCourses> enrollCourseOptional = Data.enrolledCourses.stream()
                 .filter(
                         ec -> ec.getStudentID().equals(Data.currentLoggedStudent)
                         && ec.getCourse().getCourseID().equals(course.getCourseID())
                 )
                 .findFirst();
-
+        
         if (enrollCourseOptional.isPresent()) {
             Data.enrolledCourses.remove(enrollCourseOptional.get());
             locadCourses_jButton4ActionPerformed(evt);
