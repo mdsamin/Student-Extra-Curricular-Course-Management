@@ -396,7 +396,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         //vacances
         String vacances = model.getValueAt(selectedRowIndex, 6).toString();
 
-        Course course = new Course(coachID, courseID, courseName, location, day, time, vacances);
+        Course course = new Course(coachID, courseID, courseName, location, day, time, Integer.parseInt(vacances));
         return course;
     }
 
@@ -419,7 +419,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         //vacances
 //        String vacances = model.getValueAt(selectedRowIndex, 6).toString();
 
-        Course course = new Course(coachID, courseID, courseName, location, day, time, "");
+        Course course = new Course(coachID, courseID, courseName, location, day, time, 0);
         return course;
     }
 

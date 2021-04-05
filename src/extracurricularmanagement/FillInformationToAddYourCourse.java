@@ -440,7 +440,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         String classTime = classTime_jComboBox4.getSelectedItem().toString();
         String vacancies = vacancies_jComboBox5.getSelectedItem().toString();
 
-        Course course = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, vacancies);
+        Course course = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, Integer.parseInt(vacancies));
 
         Optional<Course> courseOptional = Data.courseList.stream()
                 .filter(c -> c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime) && c.getClassLocation().equals(classLocation))

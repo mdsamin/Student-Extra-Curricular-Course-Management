@@ -55,8 +55,8 @@ public class GenerateData {
         courses.forEach(c -> Data.courseList.add(c));
     }
 
-    public static String getVacance() {
-        return Integer.toString(1 + new Random().nextInt(20));
+    public static int getVacance() {
+        return 1 + new Random().nextInt(20);
     }
 
     public static void generateEnrollCourse() {

@@ -19,13 +19,13 @@ public class Course {
     private String classLocation;
     private String classDay;
     private String classTime;
-    private String vacancies;
+    private int vacancies;
     private int enrolled;
 
     public Course() {
     }
 
-    public Course(String coachID, String courseID, String expertise, String classLocation, String classDay, String classTime, String vacancies) {
+    public Course(String coachID, String courseID, String expertise, String classLocation, String classDay, String classTime, int vacancies) {
         this.coachID = coachID;
         this.courseID = courseID;
         this.expertise = expertise;
@@ -83,11 +83,11 @@ public class Course {
         this.classTime = classTime;
     }
 
-    public String getVacancies() {
+    public int getVacancies() {
         return vacancies;
     }
 
-    public void setVacancies(String vacancies) {
+    public void setVacancies(int vacancies) {
         this.vacancies = vacancies;
     }
 
@@ -103,4 +103,9 @@ public class Course {
     public String toString() {
         return "Course{" + "coachID=" + coachID + ", courseID=" + courseID + ", expertise=" + expertise + ", classLocation=" + classLocation + ", classDay=" + classDay + ", classTime=" + classTime + ", vacancies=" + vacancies + ", enrolled=" + enrolled + '}';
     }
+
+    public void print() {
+        System.out.println(toString());
+    }
+
 }

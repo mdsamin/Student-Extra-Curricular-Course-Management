@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 import static extracurricularmanagement.data.GenerateData.generateCourseList;
+import static extracurricularmanagement.data.GenerateData.getVacance;
 import extracurricularmanagement.model.Appoinment;
 import extracurricularmanagement.model.EnrolledCourses;
 
@@ -23,16 +24,9 @@ public class Data {
     public static int courseCount = 1;
     public static String currentLoggedCoach = "";
     public static String currentLoggedStudent = "";
-    public static List<Course> courseList = new ArrayList<>();
-    public static List<Appoinment> appoinments = new ArrayList<>();
-    public static List<EnrolledCourses> enrolledCourses = new ArrayList<>();
-    public static List<Student> studentsList = new ArrayList<>(Arrays.asList(
-            new Student(1, "A", "015", "XX"),
-            new Student(2, "B", "016", "YY")
-    ));
     public static List<String> coachList = Arrays.asList(new String[]{
         "Klopp", "Jose", "Pep", "Brendan", "Ole"
-    });    
+    });
     public static List<String> expertiseList = Arrays.asList(new String[]{
         "Swiming", "Music", "Dancing", "Chess", "Gymnastics"
     });
@@ -45,5 +39,43 @@ public class Data {
     public static List<String> location = Arrays.asList(new String[]{
         "Swiming Pool 1", "Swiming Pool 2", "Art School Yeard", "Art SChool Hall", "Art School Hall 2", "Math school Yeard", "Gym 1", "Gym 2"
     });
+    public static List<Course> courseList = new ArrayList<>(Arrays.asList(
+            new Course(Data.coachList.get(0),
+                    Integer.toString(courseCount++),
+                    Data.expertiseList.get(0),
+                    Data.location.get(0), Data.date.get(0), Data.timeSlot.get(0),
+                    getVacance()),
+            new Course(Data.coachList.get(0),
+                    Integer.toString(courseCount++),
+                    Data.expertiseList.get(0),
+                    Data.location.get(0), Data.date.get(1), Data.timeSlot.get(0),
+                    getVacance()),
+            new Course(Data.coachList.get(1),
+                    Integer.toString(courseCount++),
+                    Data.expertiseList.get(1),
+                    Data.location.get(4), Data.date.get(0), Data.timeSlot.get(1),
+                    getVacance()),
+            new Course(Data.coachList.get(1),
+                    Integer.toString(courseCount++),
+                    Data.expertiseList.get(1),
+                    Data.location.get(5), Data.date.get(0), Data.timeSlot.get(2),
+                    getVacance()),
+            new Course(Data.coachList.get(2),
+                    Integer.toString(courseCount++),
+                    Data.expertiseList.get(2),
+                    Data.location.get(2), Data.date.get(2), Data.timeSlot.get(0),
+                    getVacance()),
+            new Course(Data.coachList.get(2),
+                    Integer.toString(courseCount++),
+                    Data.expertiseList.get(2),
+                    Data.location.get(3), Data.date.get(3), Data.timeSlot.get(0),
+                    getVacance())
+    ));
+    public static List<Appoinment> appoinments = new ArrayList<>();
+    public static List<EnrolledCourses> enrolledCourses = new ArrayList<>();
+    public static List<Student> studentsList = new ArrayList<>(Arrays.asList(
+            new Student(1, "A", "015", "XX"),
+            new Student(2, "B", "016", "YY")
+    ));
 
 }
