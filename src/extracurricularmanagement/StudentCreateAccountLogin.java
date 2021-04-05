@@ -346,8 +346,8 @@ public class StudentCreateAccountLogin extends javax.swing.JFrame {
             Optional<Student> student = Data.studentsList.stream().filter(s -> s.getId() == inputId).findAny();
             if (student.isPresent()) {
                 Data.currentLoggedStudent = Integer.toString(student.get().getId());
-                SearchCourseToJoin courseToJoin = new SearchCourseToJoin();
-                courseToJoin.setVisible(true);
+                ViewAllCourses viewAllCourses = new ViewAllCourses();
+                viewAllCourses.setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Account does not exist! Please create an account First!");
