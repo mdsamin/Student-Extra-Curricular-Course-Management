@@ -185,6 +185,9 @@ public class ViewAllCourses extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(allCourses_jTable1);
+        if (allCourses_jTable1.getColumnModel().getColumnCount() > 0) {
+            allCourses_jTable1.getColumnModel().getColumn(6).setHeaderValue("Vacance");
+        }
 
         enroll_jButton1.setText("Enroll");
         enroll_jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +291,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Course ID", "Coach Name", "Course Name", "Day", "Time", "Location", "Vacance"
+                "Course ID", "Coach Name", "Course Name", "Day", "Time", "Location"
             }
         ));
         jScrollPane2.setViewportView(myCourses_jTable2);
@@ -397,6 +400,29 @@ public class ViewAllCourses extends javax.swing.JFrame {
         return course;
     }
 
+    public Course getSelectedMyCourse() {
+        int selectedRowIndex = myCourses_jTable2.getSelectedRow();
+
+        DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
+        // courseID
+        String courseID = model.getValueAt(selectedRowIndex, 0).toString();
+        //coachName
+        String coachID = model.getValueAt(selectedRowIndex, 1).toString();
+        //courseName
+        String courseName = model.getValueAt(selectedRowIndex, 2).toString();
+        //day 
+        String day = model.getValueAt(selectedRowIndex, 3).toString();
+        //time
+        String time = model.getValueAt(selectedRowIndex, 4).toString();
+        //location
+        String location = model.getValueAt(selectedRowIndex, 5).toString();
+        //vacances
+        String vacances = model.getValueAt(selectedRowIndex, 6).toString();
+
+        Course course = new Course(coachID, courseID, courseName, location, day, time, vacances);
+        return course;
+    }
+
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -477,8 +503,11 @@ public class ViewAllCourses extends javax.swing.JFrame {
         showAllCoursesToJTable(Data.courseList);
     }//GEN-LAST:event_loadCourses_jButton4ActionPerformed
 
+    //my courses
     private void locadCourses_jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locadCourses_jButton4ActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) myCourses_jTable2.getModel();
+        model.setRowCount(0);
         List<EnrolledCourses> myCourses = Data.enrolledCourses.stream()
                 .filter(ec -> ec.getStudentID().equals(Data.currentLoggedStudent))
                 .collect(Collectors.toList());
@@ -491,7 +520,25 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
     private void cancel_jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_jButton5ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(rootPane, "Feature yet to implement!");
+        Course course = getSelectedMyCourse();
+        //TODO: clean
+        System.out.println("course Selected to Remove : \n" + course.toString());
+
+        Optional<EnrolledCourses> enrollCourseOptional = Data.enrolledCourses.stream()
+                .filter(
+                        ec
+                        -> //                                                ec -> ec.getCourse().getClassDay().equals(course.getClassDay())
+                        //                        && ec.getCourse().getClassTime().equals(course.getClassTime())
+                        ec.getStudentID().equals(Data.currentLoggedStudent)
+                        && ec.getCourse().getCourseID().equals(course.getCourseID())
+                )
+                .findFirst();
+        if (enrollCourseOptional.isPresent()) {
+            Data.enrolledCourses.remove(enrollCourseOptional.get());
+        } else {
+            System.out.println("enrollCourseOptional.get() : " + enrollCourseOptional.get());
+        }
+        locadCourses_jButton4ActionPerformed(evt);
     }//GEN-LAST:event_cancel_jButton5ActionPerformed
 
     /**
