@@ -30,7 +30,6 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
-import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.EnrolledCourses;
 import java.util.ArrayList;
@@ -499,7 +498,6 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
     private void loadCourses_jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCourses_jButton4ActionPerformed
         // TODO add your handling code here:
-        GenerateData.generateCourseList();
         showAllCoursesToJTable(Data.courseList);
     }//GEN-LAST:event_loadCourses_jButton4ActionPerformed
 

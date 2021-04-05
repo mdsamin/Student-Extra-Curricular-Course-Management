@@ -30,7 +30,6 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
-import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Appoinment;
 import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.EnrolledCourses;
@@ -332,8 +331,6 @@ public class VisitorAppointment extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        //TODO: delete
-        GenerateData.generateCourseList();
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0);
         showDataToJTable(Data.courseList);

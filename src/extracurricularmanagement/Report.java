@@ -30,7 +30,6 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
-import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Appoinment;
 import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.EnrolledCourses;
@@ -277,8 +276,6 @@ public class Report extends javax.swing.JFrame {
 
     private void refresh_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh_jButton1ActionPerformed
         // TODO add your handling code here:
-//        GenerateData.generateCourseList();
-        GenerateData.generateCourseList();
         addAllCoursesRowToJTable();
     }//GEN-LAST:event_refresh_jButton1ActionPerformed
 

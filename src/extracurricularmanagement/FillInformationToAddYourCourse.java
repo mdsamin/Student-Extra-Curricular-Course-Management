@@ -30,7 +30,6 @@
 package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
-import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Course;
 import extracurricularmanagement.model.Student;
 import java.util.List;
@@ -472,7 +471,6 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
     private void goBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBack1ActionPerformed
         // TODO add your handling code here:
         if (dataLoad) {
-            GenerateData.generateCourseList();
             addRowToJTable();
             dataLoad = false;
         } else {
