@@ -301,6 +301,11 @@ public class ViewAllCourses extends javax.swing.JFrame {
         });
 
         cancel_jButton5.setText("Cancel");
+        cancel_jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel_jButton5ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -474,25 +479,20 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
     private void locadCourses_jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locadCourses_jButton4ActionPerformed
         // TODO add your handling code here:
-        // TODO add your handling code here:
         List<EnrolledCourses> myCourses = Data.enrolledCourses.stream()
                 .filter(ec -> ec.getStudentID().equals(Data.currentLoggedStudent))
                 .collect(Collectors.toList());
-        myCourses.forEach(ec -> {
-            myCourseToShow
-                    += "    Course Name : " + ec.getCourse().getExpertise()
-                    + "     Coach Name : " + ec.getCourse().getCoachID()
-                    + "     Time : " + ec.getCourse().getClassDay() + " " + ec.getCourse().getClassTime()
-                    + "     Location : " + ec.getCourse().getClassLocation()
-                    + ""
-                    + "\n-------------------------------------------------\n";
-        });
         List<Course> myCoursesList = new ArrayList<>();
         myCourses.forEach(ec -> {
             myCoursesList.add(ec.getCourse());
         });
         showMyCoursesToJTable(myCoursesList);
     }//GEN-LAST:event_locadCourses_jButton4ActionPerformed
+
+    private void cancel_jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_jButton5ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(rootPane, "Feature yet to implement!");
+    }//GEN-LAST:event_cancel_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
