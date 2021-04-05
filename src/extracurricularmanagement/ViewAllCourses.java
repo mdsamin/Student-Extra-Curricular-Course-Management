@@ -51,14 +51,38 @@ public class ViewAllCourses extends javax.swing.JFrame {
     public ViewAllCourses() {
         //TODO: delete
         System.out.println("CurrentLy Logged user : " + Data.currentLoggedStudent.toString());
-        
+
         initComponents();
         Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
-        showDataToJTable(Data.courseList);
+        showAllCoursesToJTable(Data.courseList);
     }
 
-    public void showDataToJTable(List<Course> courses) {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    public void showAllCoursesToJTable(List<Course> courses) {
+        DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
+        List<Course> list = courses;
+        Object rowData[] = new Object[7];
+        for (int i = 0; i < list.size(); i++) {
+            //courseID
+            rowData[0] = list.get(i).getCourseID();
+            //coachName
+            rowData[1] = list.get(i).getCoachID();
+            //course Name
+            rowData[2] = list.get(i).getExpertise();
+            //day 
+            rowData[3] = list.get(i).getClassDay();
+            //time
+            rowData[4] = list.get(i).getClassTime();
+            //location
+            rowData[5] = list.get(i).getClassLocation();
+            //vacances
+            rowData[6] = list.get(i).getVacancies();
+
+            model.addRow(rowData);
+        }
+    }
+
+    public void showMyCoursesToJTable(List<Course> courses) {
+        DefaultTableModel model = (DefaultTableModel) myCourses_jTable2.getModel();
         List<Course> list = courses;
         Object rowData[] = new Object[7];
         for (int i = 0; i < list.size(); i++) {
@@ -93,17 +117,22 @@ public class ViewAllCourses extends javax.swing.JFrame {
         title = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        allCourses_jTable1 = new javax.swing.JTable();
         enroll_jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         expertise_header1 = new javax.swing.JLabel();
         expertise_jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
         classDay_jComboBox3 = new javax.swing.JComboBox<>();
         classTime_jComboBox5 = new javax.swing.JComboBox<>();
         loadCourses_jButton4 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        myCourses_jTable2 = new javax.swing.JTable();
+        locadCourses_jButton4 = new javax.swing.JButton();
+        cancel_jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -132,7 +161,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
                 .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 90, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(345, 345, 345)
                 .add(header)
-                .addContainerGap(493, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         titleLayout.setVerticalGroup(
             titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -146,8 +175,8 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        allCourses_jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        allCourses_jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -155,7 +184,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
                 "Course ID", "Coach Name", "Course Name", "Day", "Time", "Location", "Vacance"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(allCourses_jTable1);
 
         enroll_jButton1.setText("Enroll");
         enroll_jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -183,13 +212,6 @@ public class ViewAllCourses extends javax.swing.JFrame {
         expertise_jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 expertise_jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("MyCourses");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -224,65 +246,100 @@ public class ViewAllCourses extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1276, Short.MAX_VALUE)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jButton1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(enroll_jButton1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(expertise_header1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 206, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18)
-                        .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(79, 79, 79)
-                        .add(loadCourses_jButton4)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jButton2)))
+                .add(enroll_jButton1)
+                .add(126, 126, 126)
+                .add(expertise_header1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 206, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(79, 79, 79)
+                .add(loadCourses_jButton4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 257, Short.MAX_VALUE)
+                .add(jButton2)
                 .addContainerGap())
+            .add(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(jButton1)
-                        .add(enroll_jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .add(0, 1, Short.MAX_VALUE)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(expertise_header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jButton2)
-                            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(loadCourses_jButton4)))
-                        .add(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 519, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .add(jButton2)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(classDay_jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(loadCourses_jButton4))
+                    .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(expertise_header1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(enroll_jButton1)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 593, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
+
+        jTabbedPane1.addTab("Enroll Courses", jPanel1);
+
+        myCourses_jTable2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        myCourses_jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Course ID", "Coach Name", "Course Name", "Day", "Time", "Location", "Vacance"
+            }
+        ));
+        jScrollPane2.setViewportView(myCourses_jTable2);
+
+        locadCourses_jButton4.setText("Load My Courses");
+        locadCourses_jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locadCourses_jButton4ActionPerformed(evt);
+            }
+        });
+
+        cancel_jButton5.setText("Cancel");
+
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1295, Short.MAX_VALUE)
+            .add(jPanel2Layout.createSequentialGroup()
+                .add(locadCourses_jButton4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(cancel_jButton5)
+                .add(0, 0, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(locadCourses_jButton4)
+                    .add(cancel_jButton5))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 587, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(27, 27, 27))
+        );
+
+        jTabbedPane1.addTab("My Courses", jPanel2);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(title, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(title, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jTabbedPane1))
         );
 
         pack();
@@ -295,7 +352,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
         Optional<EnrolledCourses> enrollCourseOptional = Data.enrolledCourses.stream()
                 .filter(
-                        ec -> ec.getCourse().getClassDay().equals(course.getClassDay()) 
+                        ec -> ec.getCourse().getClassDay().equals(course.getClassDay())
                         && ec.getCourse().getClassTime().equals(course.getClassTime())
                         && ec.getStudentID().equals(Data.currentLoggedStudent)
                 )
@@ -313,9 +370,9 @@ public class ViewAllCourses extends javax.swing.JFrame {
     }//GEN-LAST:event_enroll_jButton1ActionPerformed
 
     public Course getSelectedCourse() {
-        int selectedRowIndex = jTable1.getSelectedRow();
+        int selectedRowIndex = allCourses_jTable1.getSelectedRow();
 
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
         // courseID
         String courseID = model.getValueAt(selectedRowIndex, 0).toString();
         //coachName
@@ -348,18 +405,18 @@ public class ViewAllCourses extends javax.swing.JFrame {
         String selectedCourse = expertise_jComboBox1.getSelectedItem().toString();
         System.out.println("selectedCourse : " + selectedCourse);
         if (selectedCourse.equals("All")) {
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
             model.setRowCount(0);
-            showDataToJTable(Data.courseList);
+            showAllCoursesToJTable(Data.courseList);
         } else {
             List<Course> searchCourse = Data.courseList.stream()
                     .filter(c -> c.getExpertise().equals(selectedCourse))
                     .collect(Collectors.toList());
 
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
             model.setRowCount(0);
             System.out.println("Making Table Void!");
-            showDataToJTable(searchCourse);
+            showAllCoursesToJTable(searchCourse);
         }
     }//GEN-LAST:event_expertise_jComboBox1ActionPerformed
 
@@ -371,12 +428,56 @@ public class ViewAllCourses extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     String myCourseToShow = "";
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void classDay_jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classDay_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+        String classDay = classDay_jComboBox3.getSelectedItem().toString();
+        System.out.println(" classDay : " + classDay);
+        if (classDay.equals("All")) {
+            DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
+            model.setRowCount(0);
+            showAllCoursesToJTable(Data.courseList);
+        } else {
+            List<Course> searchCourse = Data.courseList.stream()
+                    .filter(c -> c.getClassDay().equals(classDay))
+                    .collect(Collectors.toList());
+
+            DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
+            model.setRowCount(0);
+            showAllCoursesToJTable(searchCourse);
+        }
+    }//GEN-LAST:event_classDay_jComboBox3ActionPerformed
+
+    private void classTime_jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classTime_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+        String classTime = classTime_jComboBox5.getSelectedItem().toString();
+        System.out.println(" classDay : " + classTime);
+        if (classTime.equals("All")) {
+            DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
+            model.setRowCount(0);
+            showAllCoursesToJTable(Data.courseList);
+        } else {
+            List<Course> searchCourse = Data.courseList.stream()
+                    .filter(c -> c.getClassTime().equals(classTime))
+                    .collect(Collectors.toList());
+
+            DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
+            model.setRowCount(0);
+            showAllCoursesToJTable(searchCourse);
+        }
+    }//GEN-LAST:event_classTime_jComboBox5ActionPerformed
+
+    private void loadCourses_jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCourses_jButton4ActionPerformed
+        // TODO add your handling code here:
+        GenerateData.generateCourseList();
+        showAllCoursesToJTable(Data.courseList);
+    }//GEN-LAST:event_loadCourses_jButton4ActionPerformed
+
+    private void locadCourses_jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locadCourses_jButton4ActionPerformed
+        // TODO add your handling code here:
         // TODO add your handling code here:
         List<EnrolledCourses> myCourses = Data.enrolledCourses.stream()
                 .filter(ec -> ec.getStudentID().equals(Data.currentLoggedStudent))
                 .collect(Collectors.toList());
-        myCourseToShow = "";
         myCourses.forEach(ec -> {
             myCourseToShow
                     += "    Course Name : " + ec.getCourse().getExpertise()
@@ -386,52 +487,12 @@ public class ViewAllCourses extends javax.swing.JFrame {
                     + ""
                     + "\n-------------------------------------------------\n";
         });
-        JOptionPane.showMessageDialog(rootPane, myCourseToShow);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void classDay_jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classDay_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-        String classDay = classDay_jComboBox3.getSelectedItem().toString();
-        System.out.println(" classDay : " + classDay);
-        if (classDay.equals("All")) {
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setRowCount(0);
-            showDataToJTable(Data.courseList);
-        } else {
-            List<Course> searchCourse = Data.courseList.stream()
-                    .filter(c -> c.getClassDay().equals(classDay))
-                    .collect(Collectors.toList());
-
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setRowCount(0);
-            showDataToJTable(searchCourse);
-        }
-    }//GEN-LAST:event_classDay_jComboBox3ActionPerformed
-
-    private void classTime_jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classTime_jComboBox5ActionPerformed
-        // TODO add your handling code here:
-        String classTime = classTime_jComboBox5.getSelectedItem().toString();
-        System.out.println(" classDay : " + classTime);
-        if (classTime.equals("All")) {
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setRowCount(0);
-            showDataToJTable(Data.courseList);
-        } else {
-            List<Course> searchCourse = Data.courseList.stream()
-                    .filter(c -> c.getClassTime().equals(classTime))
-                    .collect(Collectors.toList());
-
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setRowCount(0);
-            showDataToJTable(searchCourse);
-        }
-    }//GEN-LAST:event_classTime_jComboBox5ActionPerformed
-
-    private void loadCourses_jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCourses_jButton4ActionPerformed
-        // TODO add your handling code here:
-        GenerateData.generateCourseList();
-        showDataToJTable(Data.courseList);
-    }//GEN-LAST:event_loadCourses_jButton4ActionPerformed
+        List<Course> myCoursesList = new ArrayList<>();
+        myCourses.forEach(ec -> {
+            myCoursesList.add(ec.getCourse());
+        });
+        showMyCoursesToJTable(myCoursesList);
+    }//GEN-LAST:event_locadCourses_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -501,20 +562,25 @@ public class ViewAllCourses extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable allCourses_jTable1;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton cancel_jButton5;
     private javax.swing.JComboBox<String> classDay_jComboBox3;
     private javax.swing.JComboBox<String> classTime_jComboBox5;
     private javax.swing.JButton enroll_jButton1;
     private javax.swing.JLabel expertise_header1;
     private javax.swing.JComboBox<String> expertise_jComboBox1;
     private javax.swing.JLabel header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton loadCourses_jButton4;
+    private javax.swing.JButton locadCourses_jButton4;
+    private javax.swing.JTable myCourses_jTable2;
     private javax.swing.JPanel title;
     // End of variables declaration//GEN-END:variables
 
