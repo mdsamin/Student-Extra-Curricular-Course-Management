@@ -403,7 +403,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
     public Course getSelectedMyCourse() {
         int selectedRowIndex = myCourses_jTable2.getSelectedRow();
 
-        DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) myCourses_jTable2.getModel();
         // courseID
         String courseID = model.getValueAt(selectedRowIndex, 0).toString();
         //coachName
@@ -417,9 +417,9 @@ public class ViewAllCourses extends javax.swing.JFrame {
         //location
         String location = model.getValueAt(selectedRowIndex, 5).toString();
         //vacances
-        String vacances = model.getValueAt(selectedRowIndex, 6).toString();
+//        String vacances = model.getValueAt(selectedRowIndex, 6).toString();
 
-        Course course = new Course(coachID, courseID, courseName, location, day, time, vacances);
+        Course course = new Course(coachID, courseID, courseName, location, day, time, "");
         return course;
     }
 
@@ -521,24 +521,20 @@ public class ViewAllCourses extends javax.swing.JFrame {
     private void cancel_jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel_jButton5ActionPerformed
         // TODO add your handling code here:
         Course course = getSelectedMyCourse();
-        //TODO: clean
-        System.out.println("course Selected to Remove : \n" + course.toString());
 
         Optional<EnrolledCourses> enrollCourseOptional = Data.enrolledCourses.stream()
                 .filter(
-                        ec
-                        -> //                                                ec -> ec.getCourse().getClassDay().equals(course.getClassDay())
-                        //                        && ec.getCourse().getClassTime().equals(course.getClassTime())
-                        ec.getStudentID().equals(Data.currentLoggedStudent)
+                        ec -> ec.getStudentID().equals(Data.currentLoggedStudent)
                         && ec.getCourse().getCourseID().equals(course.getCourseID())
                 )
                 .findFirst();
+
         if (enrollCourseOptional.isPresent()) {
             Data.enrolledCourses.remove(enrollCourseOptional.get());
+            locadCourses_jButton4ActionPerformed(evt);
         } else {
-            System.out.println("enrollCourseOptional.get() : " + enrollCourseOptional.get());
+            JOptionPane.showMessageDialog(rootPane, "Error in cenceling Course!");
         }
-        locadCourses_jButton4ActionPerformed(evt);
     }//GEN-LAST:event_cancel_jButton5ActionPerformed
 
     /**
