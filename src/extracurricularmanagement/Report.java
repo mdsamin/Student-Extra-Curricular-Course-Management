@@ -31,6 +31,7 @@ package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
 import extracurricularmanagement.data.GenerateData;
+import extracurricularmanagement.model.Appoinment;
 import extracurricularmanagement.model.Course;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -59,10 +60,12 @@ public class Report extends javax.swing.JFrame {
         all_lesson_jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        allCourses_jTable1 = new javax.swing.JTable();
         refresh_jButton1 = new javax.swing.JButton();
         visitor_appoinment_jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        loadAppoinments_jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        visitorsReports_jTable2 = new javax.swing.JTable();
         student_report_jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -109,8 +112,8 @@ public class Report extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("All Lesson Report");
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        allCourses_jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        allCourses_jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -118,7 +121,12 @@ public class Report extends javax.swing.JFrame {
                 "Course ID", "Coach Name", "Course Name", "Day", "Time", "Location", "Total Enrolled"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(allCourses_jTable1);
+        if (allCourses_jTable1.getColumnModel().getColumnCount() > 0) {
+            allCourses_jTable1.getColumnModel().getColumn(2).setHeaderValue("Course Name");
+            allCourses_jTable1.getColumnModel().getColumn(5).setHeaderValue("Location");
+            allCourses_jTable1.getColumnModel().getColumn(6).setHeaderValue("Total Enrolled");
+        }
 
         refresh_jButton1.setText("Refresh");
         refresh_jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -150,24 +158,40 @@ public class Report extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("All Lesson Report", all_lesson_jPanel3);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Visitor Appointment Report");
+        loadAppoinments_jButton1.setText("Load All Appoinments");
+        loadAppoinments_jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadAppoinments_jButton1ActionPerformed(evt);
+            }
+        });
+
+        visitorsReports_jTable2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        visitorsReports_jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Visitor Name", "Coach Name", "Day", "Time"
+            }
+        ));
+        jScrollPane2.setViewportView(visitorsReports_jTable2);
 
         org.jdesktop.layout.GroupLayout visitor_appoinment_jPanel4Layout = new org.jdesktop.layout.GroupLayout(visitor_appoinment_jPanel4);
         visitor_appoinment_jPanel4.setLayout(visitor_appoinment_jPanel4Layout);
         visitor_appoinment_jPanel4Layout.setHorizontalGroup(
             visitor_appoinment_jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(visitor_appoinment_jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .addContainerGap(1351, Short.MAX_VALUE))
+                .add(loadAppoinments_jButton1)
+                .add(0, 0, Short.MAX_VALUE))
+            .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1577, Short.MAX_VALUE)
         );
         visitor_appoinment_jPanel4Layout.setVerticalGroup(
             visitor_appoinment_jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(visitor_appoinment_jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .addContainerGap(503, Short.MAX_VALUE))
+                .add(loadAppoinments_jButton1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 507, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Visitor Appointment Report", visitor_appoinment_jPanel4);
@@ -229,11 +253,20 @@ public class Report extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        GenerateData.generateCourseList();
         GenerateData.generateCourseList();
-        addRowToJTable();
+        addAllCoursesRowToJTable();
     }//GEN-LAST:event_refresh_jButton1ActionPerformed
 
-    public void addRowToJTable() {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    private void loadAppoinments_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadAppoinments_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //TODO: clean
+        Data.appoinments.forEach(a -> System.out.println(a.toString()));
+        DefaultTableModel model = (DefaultTableModel) visitorsReports_jTable2.getModel();
+        model.setRowCount(0);
+        addAllVisitorsRowToJTable();
+    }//GEN-LAST:event_loadAppoinments_jButton1ActionPerformed
+
+    public void addAllCoursesRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
         List<Course> list = Data.courseList;
         Object rowData[] = new Object[7];
         for (int i = 0; i < list.size(); i++) {
@@ -251,6 +284,24 @@ public class Report extends javax.swing.JFrame {
             rowData[5] = list.get(i).getClassLocation();
             //vacances
             rowData[6] = list.get(i).getVacancies();
+
+            model.addRow(rowData);
+        }
+    }
+
+    public void addAllVisitorsRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) visitorsReports_jTable2.getModel();
+        List<Appoinment> list = Data.appoinments;
+        Object rowData[] = new Object[5];
+        for (int i = 0; i < list.size(); i++) {
+            //courseID
+            rowData[0] = list.get(i).getVisitorName();
+            //coachName
+            rowData[1] = list.get(i).getCoachName();
+            //day
+            rowData[2] = list.get(i).getDay();
+            //time 
+            rowData[3] = list.get(i).getTime();
 
             model.addRow(rowData);
         }
@@ -324,19 +375,21 @@ public class Report extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable allCourses_jTable1;
     private javax.swing.JPanel all_lesson_jPanel3;
     private javax.swing.JButton goBack;
     private javax.swing.JLabel header;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton loadAppoinments_jButton1;
     private javax.swing.JButton refresh_jButton1;
     private javax.swing.JPanel student_report_jPanel2;
     private javax.swing.JPanel title;
     private javax.swing.JPanel visitor_appoinment_jPanel4;
+    private javax.swing.JTable visitorsReports_jTable2;
     // End of variables declaration//GEN-END:variables
 
 }

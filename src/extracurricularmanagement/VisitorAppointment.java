@@ -290,6 +290,7 @@ public class VisitorAppointment extends javax.swing.JFrame {
                 }
             } else {
                 Data.appoinments.add(appoinment);
+                //TODO: clean
                 Data.appoinments.forEach(a -> System.out.println(a.toString()));
                 JOptionPane.showMessageDialog(rootPane, "Appoinment confirmed successful!");
             }
@@ -331,7 +332,10 @@ public class VisitorAppointment extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        //TODO: delete
         GenerateData.generateCourseList();
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
         showDataToJTable(Data.courseList);
     }//GEN-LAST:event_jButton4ActionPerformed
 
