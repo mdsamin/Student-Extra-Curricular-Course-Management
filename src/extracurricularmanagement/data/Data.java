@@ -31,8 +31,8 @@ public class Data {
             new Student(2, "B", "016", "YY")
     ));
     public static List<String> coachList = Arrays.asList(new String[]{
-        "Kevin Oens", "Ellen", "Pitbull", "david beckham"
-    });
+        "Klopp", "Jose", "Pep", "Brendan", "Ole"
+    });    
     public static List<String> expertiseList = Arrays.asList(new String[]{
         "Swiming", "Music", "Dancing", "Chess", "Gymnastics"
     });
