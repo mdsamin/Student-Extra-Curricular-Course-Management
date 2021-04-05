@@ -33,6 +33,8 @@ import extracurricularmanagement.data.Data;
 import extracurricularmanagement.data.GenerateData;
 import extracurricularmanagement.model.Appoinment;
 import extracurricularmanagement.model.Course;
+import extracurricularmanagement.model.EnrolledCourses;
+import extracurricularmanagement.model.Student;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,7 +69,9 @@ public class Report extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         visitorsReports_jTable2 = new javax.swing.JTable();
         student_report_jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        loadAllEnrolled_students_jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        enrolledStudent_jTable3 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -124,6 +128,8 @@ public class Report extends javax.swing.JFrame {
         jScrollPane1.setViewportView(allCourses_jTable1);
         if (allCourses_jTable1.getColumnModel().getColumnCount() > 0) {
             allCourses_jTable1.getColumnModel().getColumn(2).setHeaderValue("Course Name");
+            allCourses_jTable1.getColumnModel().getColumn(3).setHeaderValue("Day");
+            allCourses_jTable1.getColumnModel().getColumn(4).setHeaderValue("Time");
             allCourses_jTable1.getColumnModel().getColumn(5).setHeaderValue("Location");
             allCourses_jTable1.getColumnModel().getColumn(6).setHeaderValue("Total Enrolled");
         }
@@ -175,6 +181,10 @@ public class Report extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(visitorsReports_jTable2);
+        if (visitorsReports_jTable2.getColumnModel().getColumnCount() > 0) {
+            visitorsReports_jTable2.getColumnModel().getColumn(2).setHeaderValue("Day");
+            visitorsReports_jTable2.getColumnModel().getColumn(3).setHeaderValue("Time");
+        }
 
         org.jdesktop.layout.GroupLayout visitor_appoinment_jPanel4Layout = new org.jdesktop.layout.GroupLayout(visitor_appoinment_jPanel4);
         visitor_appoinment_jPanel4.setLayout(visitor_appoinment_jPanel4Layout);
@@ -196,24 +206,40 @@ public class Report extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Visitor Appointment Report", visitor_appoinment_jPanel4);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Student Report");
+        loadAllEnrolled_students_jButton1.setText("Load All Enrolled Students");
+        loadAllEnrolled_students_jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadAllEnrolled_students_jButton1ActionPerformed(evt);
+            }
+        });
+
+        enrolledStudent_jTable3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        enrolledStudent_jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Student Name", "Course Name"
+            }
+        ));
+        jScrollPane3.setViewportView(enrolledStudent_jTable3);
 
         org.jdesktop.layout.GroupLayout student_report_jPanel2Layout = new org.jdesktop.layout.GroupLayout(student_report_jPanel2);
         student_report_jPanel2.setLayout(student_report_jPanel2Layout);
         student_report_jPanel2Layout.setHorizontalGroup(
             student_report_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(student_report_jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel3)
-                .addContainerGap(1446, Short.MAX_VALUE))
+                .add(loadAllEnrolled_students_jButton1)
+                .add(0, 0, Short.MAX_VALUE))
+            .add(jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1577, Short.MAX_VALUE)
         );
         student_report_jPanel2Layout.setVerticalGroup(
             student_report_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(student_report_jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel3)
-                .addContainerGap(503, Short.MAX_VALUE))
+                .add(loadAllEnrolled_students_jButton1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 507, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Student Report", student_report_jPanel2);
@@ -265,6 +291,15 @@ public class Report extends javax.swing.JFrame {
         addAllVisitorsRowToJTable();
     }//GEN-LAST:event_loadAppoinments_jButton1ActionPerformed
 
+    private void loadAllEnrolled_students_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadAllEnrolled_students_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //TODO: clean
+        Data.enrolledCourses.forEach(e -> System.out.println(e.toString()));
+        DefaultTableModel model = (DefaultTableModel) enrolledStudent_jTable3.getModel();
+        model.setRowCount(0);
+        addAllEnrolledStudentsRowToJTable();
+    }//GEN-LAST:event_loadAllEnrolled_students_jButton1ActionPerformed
+
     public void addAllCoursesRowToJTable() {
         DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
         List<Course> list = Data.courseList;
@@ -302,6 +337,24 @@ public class Report extends javax.swing.JFrame {
             rowData[2] = list.get(i).getDay();
             //time 
             rowData[3] = list.get(i).getTime();
+
+            model.addRow(rowData);
+        }
+    }
+
+    public void addAllEnrolledStudentsRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) enrolledStudent_jTable3.getModel();
+        List<EnrolledCourses> list = Data.enrolledCourses;
+        Object rowData[] = new Object[2];
+        for (int i = 0; i < list.size(); i++) {
+
+            //student name
+            int studentID = Integer.parseInt(list.get(i).getStudentID());
+            String studentName = Data.studentsList.stream().filter(s -> s.getId() == studentID).findFirst().get().getName();
+            rowData[0] = studentName;
+
+            //course name
+            rowData[1] = list.get(i).getCourse().getExpertise();
 
             model.addRow(rowData);
         }
@@ -377,13 +430,15 @@ public class Report extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable allCourses_jTable1;
     private javax.swing.JPanel all_lesson_jPanel3;
+    private javax.swing.JTable enrolledStudent_jTable3;
     private javax.swing.JButton goBack;
     private javax.swing.JLabel header;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton loadAllEnrolled_students_jButton1;
     private javax.swing.JButton loadAppoinments_jButton1;
     private javax.swing.JButton refresh_jButton1;
     private javax.swing.JPanel student_report_jPanel2;
