@@ -294,7 +294,11 @@ public class ViewAllCourses extends javax.swing.JFrame {
         Course course = getSelectedCourse();
 
         Optional<EnrolledCourses> enrollCourseOptional = Data.enrolledCourses.stream()
-                .filter(ec -> ec.getCourse().getClassDay().equals(course.getClassDay()) && ec.getCourse().getClassTime().equals(course.getClassTime()))
+                .filter(
+                        ec -> ec.getCourse().getClassDay().equals(course.getClassDay()) 
+                        && ec.getCourse().getClassTime().equals(course.getClassTime())
+                        && ec.getStudentID().equals(Data.currentLoggedStudent)
+                )
                 .findFirst();
         System.out.println("enrollCourseOptional : " + enrollCourseOptional.toString());
         if (enrollCourseOptional.isPresent()) {
