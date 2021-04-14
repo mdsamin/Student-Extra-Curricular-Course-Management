@@ -365,8 +365,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
                             ec -> ec.getCourse().getClassDay().equals(course.getClassDay())
                             && ec.getCourse().getClassTime().equals(course.getClassTime())
                             && ec.getStudentID().equals(Data.currentLoggedStudent)
-                    )
-                    .findFirst();
+                    ).findFirst();
             System.out.println("enrollCourseOptional : " + enrollCourseOptional.toString());
             if (enrollCourseOptional.isPresent()) {
                 JOptionPane.showMessageDialog(rootPane, "Sorry, you have another class at the same time!");
@@ -548,6 +547,13 @@ public class ViewAllCourses extends javax.swing.JFrame {
 
         if (enrollCourseOptional.isPresent()) {
             Data.enrolledCourses.remove(enrollCourseOptional.get());
+            Data.courseList.forEach(c -> {
+                if (c.getCourseID().equals(course.getCourseID())) {
+                    int vacancy = c.getVacancies();
+                    c.setVacancies(++vacancy);
+                }
+            });
+
             locadCourses_jButton4ActionPerformed(evt);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Error in cenceling Course!");
