@@ -336,12 +336,12 @@ public class StudentCreateAccountLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_address_jTextField3ActionPerformed
 
     private void logging_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logging_jButton1ActionPerformed
-       //TODO: delete
+        //TODO: delete
         System.out.println("Loggin List Size : " + Data.studentsList.size());
         Data.studentsList.forEach(s -> {
             System.out.println(s.toString());
         });
-        
+
         if (!loggingID_TextField.getText().toString().isEmpty()) {
             int inputId = Integer.parseInt(loggingID_TextField.getText().toString());
             Optional<Student> student = Data.studentsList.stream().filter(s -> s.getId() == inputId).findAny();
@@ -368,13 +368,20 @@ public class StudentCreateAccountLogin extends javax.swing.JFrame {
         String phone = phone_jTextField2.getText().toString();
         String address = address_jTextField3.getText().toString();
 
+        int phoneNumber = 0;
+
         if (name.isEmpty() | phone.isEmpty() | address.isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Please fill All the fields!");
         } else {
-            Student student = new Student(new Random().nextInt(1000) + 1, name, phone, address);
-            Data.studentsList.add(student);
-            JOptionPane.showMessageDialog(rootPane, "Account Created Successfully!"
-                    + "\n ID : " + student.getId());
+            try {
+                phoneNumber = Integer.parseInt(phone);
+                Student student = new Student(new Random().nextInt(1000) + 1, name, phone, address);
+                Data.studentsList.add(student);
+                JOptionPane.showMessageDialog(rootPane, "Account Created Successfully!"
+                        + "\n ID : " + student.getId());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Please Enter Number! Only Numbers are Allowed!");
+            }
         }
     }//GEN-LAST:event_crearteAccount_jButton2ActionPerformed
 

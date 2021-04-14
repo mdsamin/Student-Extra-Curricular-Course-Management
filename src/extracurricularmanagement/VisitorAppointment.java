@@ -275,6 +275,7 @@ public class VisitorAppointment extends javax.swing.JFrame {
                     .findFirst();
 
             //TODO: have to  move them into separate method
+            //checking coach has course in the same time.
             Optional<Course> courseOptional = Data.courseList.stream()
                     .filter(c -> c.getClassDay().equals(day) && c.getClassTime().equals(time))
                     .findFirst();
