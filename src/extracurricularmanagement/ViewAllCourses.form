@@ -137,7 +137,7 @@
                       <Component id="classTime_jComboBox5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                       <Component id="loadCourses_jButton4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="257" max="32767" attributes="0"/>
+                      <EmptySpace pref="297" max="32767" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -343,7 +343,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="loadCourses_jButton4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Load Courses"/>
+                <Property name="text" type="java.lang.String" value="Refresh"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loadCourses_jButton4ActionPerformed"/>
