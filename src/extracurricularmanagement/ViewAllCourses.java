@@ -235,7 +235,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
             }
         });
 
-        loadCourses_jButton4.setText("Refresh");
+        loadCourses_jButton4.setText("Reload Courses");
         loadCourses_jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadCourses_jButton4ActionPerformed(evt);
@@ -259,7 +259,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
                 .add(classTime_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(79, 79, 79)
                 .add(loadCourses_jButton4)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 297, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 253, Short.MAX_VALUE)
                 .add(jButton2)
                 .addContainerGap())
             .add(jScrollPane1)

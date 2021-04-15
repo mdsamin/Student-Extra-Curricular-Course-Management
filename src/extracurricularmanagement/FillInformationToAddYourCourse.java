@@ -163,7 +163,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         classDay_header3.setAutoscrolls(true);
 
         classDay_jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        classDay_jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
+        classDay_jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" }));
         classDay_jComboBox3.setAutoscrolls(true);
         classDay_jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +186,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         classTime_header5.setAutoscrolls(true);
 
         classTime_jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        classTime_jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10:00-11:00", "11:00-12:00", "12:00-13:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "10:00-11:00" }));
+        classTime_jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10:00-11:00", "11:00-12:00", "12:00-13:00", "14:00-15:00", "15:00-16:00", "16:00-17:00" }));
         classTime_jComboBox4.setAutoscrolls(true);
         classTime_jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
