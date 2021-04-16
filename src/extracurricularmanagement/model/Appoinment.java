@@ -15,15 +15,17 @@ public class Appoinment {
     private String visitorName;
     private String time;
     private String day;
+    private String weekNumber;
 
     public Appoinment() {
     }
 
-    public Appoinment(String coachName, String visitorName, String time, String day) {
+    public Appoinment(String coachName, String visitorName, String time, String day, String weekNo) {
         this.coachName = coachName;
         this.visitorName = visitorName;
         this.time = time;
         this.day = day;
+        this.weekNumber = weekNo;
     }
 
     public String getCoachName() {
@@ -58,8 +60,17 @@ public class Appoinment {
         this.day = day;
     }
 
+    public String getWeekNumber() {
+        return weekNumber;
+    }
+
+    public void setWeekNumber(String weekNumber) {
+        this.weekNumber = weekNumber;
+    }
+
     @Override
     public String toString() {
-        return "Appoinment{" + "coachName=" + coachName + ", visitorName=" + visitorName + ", time=" + time + ", day=" + day + '}';
+        return "Appoinment{" + "coachName=" + coachName + ", visitorName=" + visitorName + ", time=" + time + ", day=" + day + ", weekNumber=" + weekNumber + '}';
     }
+
 }

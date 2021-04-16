@@ -75,6 +75,7 @@ public class VisitorAppointment extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         visitorName_jTextField1 = new javax.swing.JTextField();
         coachList_jComboBox1 = new javax.swing.JComboBox<>();
+        week_jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -175,6 +176,13 @@ public class VisitorAppointment extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Visitor Name : ");
 
+        week_jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Week 1", "Week 2", "Week 3", "Week 4" }));
+        week_jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                week_jComboBox1ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -195,7 +203,9 @@ public class VisitorAppointment extends javax.swing.JFrame {
                         .add(classDay_jComboBox4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(classTime_jComboBox6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(155, 155, 155)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(week_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(63, 63, 63)
                         .add(jButton3))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jButton4)
@@ -219,7 +229,8 @@ public class VisitorAppointment extends javax.swing.JFrame {
                     .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(classTime_jComboBox6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(classDay_jComboBox4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(coachList_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(coachList_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(week_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(18, 18, 18)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(expertise_jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -262,16 +273,17 @@ public class VisitorAppointment extends javax.swing.JFrame {
             String coachName = coachList_jComboBox1.getSelectedItem().toString();
             String time = classTime_jComboBox6.getSelectedItem().toString();
             String day = classDay_jComboBox4.getSelectedItem().toString();
+            String weekNo = week_jComboBox1.getSelectedItem().toString();
 
-            Appoinment appoinment = new Appoinment(coachName, visitorName, time, day);
+            Appoinment appoinment = new Appoinment(coachName, visitorName, time, day, weekNo);
 
             Optional<Appoinment> appoinmentDuplicate = Data.appoinments.stream()
-                    .filter(a -> a.getDay().equals(day) && a.getTime().equals(time) && a.getVisitorName().equals(visitorName))
+                    .filter(a -> a.getWeekNumber().equals(weekNo) && a.getDay().equals(day) && a.getTime().equals(time) && a.getVisitorName().equals(visitorName))
                     .findFirst();
 
             //TODO: have to use one filter chain!
             Optional<Appoinment> appoinmentCoachExist = Data.appoinments.stream()
-                    .filter(a -> a.getDay().equals(day) && a.getTime().equals(time) && a.getCoachName().equals(coachName))
+                    .filter(a -> a.getWeekNumber().equals(weekNo) && a.getDay().equals(day) && a.getTime().equals(time) && a.getCoachName().equals(coachName))
                     .findFirst();
 
             //TODO: have to  move them into separate method
@@ -336,6 +348,10 @@ public class VisitorAppointment extends javax.swing.JFrame {
         model.setRowCount(0);
         showDataToJTable(Data.courseList);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void week_jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_week_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_week_jComboBox1ActionPerformed
 
     public void showDataToJTable(List<Course> courses) {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
@@ -413,31 +429,22 @@ public class VisitorAppointment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> classDay_jComboBox3;
     private javax.swing.JComboBox<String> classDay_jComboBox4;
-    private javax.swing.JComboBox<String> classTime_jComboBox5;
     private javax.swing.JComboBox<String> classTime_jComboBox6;
     private javax.swing.JComboBox<String> coachList_jComboBox1;
-    private javax.swing.JButton enroll_jButton1;
     private javax.swing.JButton enroll_jButton2;
     private javax.swing.JLabel expertise_header1;
-    private javax.swing.JLabel expertise_header2;
     private javax.swing.JComboBox<String> expertise_jComboBox1;
-    private javax.swing.JComboBox<String> expertise_jComboBox2;
     private javax.swing.JLabel header;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JPanel title;
     private javax.swing.JTextField visitorName_jTextField1;
+    private javax.swing.JComboBox<String> week_jComboBox1;
     // End of variables declaration//GEN-END:variables
 
 }

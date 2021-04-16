@@ -176,14 +176,10 @@ public class Report extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Visitor Name", "Coach Name", "Day", "Time"
+                "Visitor Name", "Coach Name", "Day", "Time", "Week"
             }
         ));
         jScrollPane2.setViewportView(visitorsReports_jTable2);
-        if (visitorsReports_jTable2.getColumnModel().getColumnCount() > 0) {
-            visitorsReports_jTable2.getColumnModel().getColumn(2).setHeaderValue("Day");
-            visitorsReports_jTable2.getColumnModel().getColumn(3).setHeaderValue("Time");
-        }
 
         org.jdesktop.layout.GroupLayout visitor_appoinment_jPanel4Layout = new org.jdesktop.layout.GroupLayout(visitor_appoinment_jPanel4);
         visitor_appoinment_jPanel4.setLayout(visitor_appoinment_jPanel4Layout);
@@ -334,6 +330,8 @@ public class Report extends javax.swing.JFrame {
             rowData[2] = list.get(i).getDay();
             //time 
             rowData[3] = list.get(i).getTime();
+            //week
+            rowData[4] = list.get(i).getWeekNumber();
 
             model.addRow(rowData);
         }
