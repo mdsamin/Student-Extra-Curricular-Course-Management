@@ -77,7 +77,7 @@ public class Data {
     ));
 
     public static int getVacancy() {
-        return 1 + new Random().nextInt(20);
+        return 20;
     }
 
 }
