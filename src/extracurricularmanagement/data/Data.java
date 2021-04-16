@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 import extracurricularmanagement.model.Appoinment;
+import extracurricularmanagement.model.Coach;
 import extracurricularmanagement.model.EnrolledCourses;
 
 /**
@@ -22,9 +23,22 @@ public class Data {
     public static int courseCount = 1;
     public static String currentLoggedCoach = "";
     public static String currentLoggedStudent = "";
-    public static List<String> coachList = Arrays.asList(new String[]{
-        "Klopp", "Jose", "Pep", "Brendan", "Ole"
+
+    public static List<Coach> coachListObject = Arrays.asList(new Coach[]{
+        new Coach("Klopp Kevin", "Klopp", "South beach road, Californina, CA 1215", "012345678"),
+        new Coach("Jose Anderson", "Jose", "15 Down Town, Los Angalose, LA 125", "02123456"),
+        new Coach("Pep Maven", "Pep", "15 Town Road, Virgenia, V 125", "03123456"),
+        new Coach("Brendan Torrent", "Brendan", "15 Town Hall, Alaska, Alaska 25", "05123456"),
+        new Coach("Ole Sabbir", "Ole", "15 Town Hall, Alaska, Alaska 25", "05789456")
+//        0. "Klopp", 1. "Jose", 2."Pep", 3."Brendan", 4."Ole"
     });
+
+    public static List<String> coachList = Arrays.asList(new String[]{
+        coachListObject.get(0).getId(),//Klopp
+        coachListObject.get(1).getId(),//Jose
+        coachListObject.get(2).getId(),//Pep
+        coachListObject.get(3).getId(),//Brendan
+        coachListObject.get(4).getId()});//oles
     public static List<String> expertiseList = Arrays.asList(new String[]{
         "Swiming", "Music", "Dancing", "Chess", "Gymnastics"
     });
