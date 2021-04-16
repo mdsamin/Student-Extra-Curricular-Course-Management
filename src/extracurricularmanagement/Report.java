@@ -218,7 +218,7 @@ public class Report extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student Name", "Course Name"
+                "Student Name", "Course Name", "Coach Name", "Date", "Time", "Location"
             }
         ));
         jScrollPane3.setViewportView(enrolledStudent_jTable3);
@@ -341,18 +341,25 @@ public class Report extends javax.swing.JFrame {
 
     public void addAllEnrolledStudentsRowToJTable() {
         DefaultTableModel model = (DefaultTableModel) enrolledStudent_jTable3.getModel();
-        List<EnrolledCourses> list = Data.enrolledCourses;
-        Object rowData[] = new Object[2];
-        for (int i = 0; i < list.size(); i++) {
+        List<EnrolledCourses> listEnrolledCourse = Data.enrolledCourses;
+        Object rowData[] = new Object[6];
+        for (int i = 0; i < listEnrolledCourse.size(); i++) {
 
             //student name
-            int studentID = Integer.parseInt(list.get(i).getStudentID());
-            String studentName = Data.studentsList.stream().filter(s -> s.getId() == studentID).findFirst().get().getName();
+            int studentID = Integer.parseInt(listEnrolledCourse.get(i).getStudentID());
+            Student student = Data.studentsList.stream().filter(s -> s.getId() == studentID).findFirst().get();
+            String studentName = student.getName();
             rowData[0] = studentName;
-
             //course name
-            rowData[1] = list.get(i).getCourse().getExpertise();
-
+            rowData[1] = listEnrolledCourse.get(i).getCourse().getExpertise();
+//            Coach name, 
+            rowData[2] = listEnrolledCourse.get(i).getCourse().getCoachID();
+//            Date,
+            rowData[3] = listEnrolledCourse.get(i).getCourse().getClassDay();
+//            Time, 
+            rowData[4] = listEnrolledCourse.get(i).getCourse().getClassTime();
+//            Location, 
+            rowData[5] = listEnrolledCourse.get(i).getCourse().getClassLocation();
             model.addRow(rowData);
         }
     }
