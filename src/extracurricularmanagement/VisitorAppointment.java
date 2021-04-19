@@ -277,10 +277,12 @@ public class VisitorAppointment extends javax.swing.JFrame {
 
             Appoinment appoinment = new Appoinment(coachName, visitorName, time, day, weekNo);
 
+            System.out.println("time.substring(0, 2) : " + time.substring(0, 2));
+
             //TODO: have to  move them into separate method
             //check coach : coach has course in the same time.
-            Optional<Course> coachHasCourseOptional = Data.courseList.stream()
-                    .filter(c -> c.getClassDay().equals(day) && c.getClassTime().equals(time))
+            Optional< Course> coachHasCourseOptional = Data.courseList.stream()
+                    .filter(c -> c.getClassDay().equals(day) && c.getClassTime().startsWith(time.substring(0, 2)))
                     .findFirst();
 
             //check-vistor : same week-date-time
