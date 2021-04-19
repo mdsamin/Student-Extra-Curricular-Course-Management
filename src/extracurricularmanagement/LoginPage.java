@@ -63,7 +63,7 @@ public class LoginPage extends javax.swing.JFrame {
         header.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         header.setForeground(new java.awt.Color(255, 255, 255));
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        header.setText("Extra curricular course Managment");
+        header.setText("Extra Curricular Course Management");
 
         org.jdesktop.layout.GroupLayout titleLayout = new org.jdesktop.layout.GroupLayout(title);
         title.setLayout(titleLayout);

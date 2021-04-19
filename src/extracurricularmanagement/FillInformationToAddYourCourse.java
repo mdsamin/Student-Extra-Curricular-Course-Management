@@ -87,7 +87,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         header.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         header.setForeground(new java.awt.Color(255, 255, 255));
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        header.setText("Extra curricular course Managment");
+        header.setText("Extra Curricular Course Management");
 
         org.jdesktop.layout.GroupLayout titleLayout = new org.jdesktop.layout.GroupLayout(title);
         title.setLayout(titleLayout);
@@ -205,7 +205,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         vacancies_header7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         vacancies_header7.setForeground(new java.awt.Color(255, 255, 255));
         vacancies_header7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        vacancies_header7.setText("Vacancies");
+        vacancies_header7.setText("Total Vacancy");
         vacancies_header7.setAutoscrolls(true);
 
         vacancies_jComboBox5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -250,8 +250,9 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .add(vacancies_header7)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(vacancies_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(vacancies_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(0, 0, Short.MAX_VALUE))
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .add(classTime_header5)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -311,7 +312,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                     .add(classTime_header5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(classTime_header6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(vacancies_header7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(vacancies_jComboBox5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(22, 22, 22)
@@ -320,7 +321,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                 .add(goBack)
                 .add(29, 29, 29)
                 .add(goBack1)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -357,7 +358,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                     .add(359, 359, 359)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1106, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         layout.setVerticalGroup(

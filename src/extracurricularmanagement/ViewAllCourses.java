@@ -142,7 +142,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         header.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         header.setForeground(new java.awt.Color(255, 255, 255));
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        header.setText("Extra curricular course Managment");
+        header.setText("Extra Curricular Course Management");
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton3.setText("Home");

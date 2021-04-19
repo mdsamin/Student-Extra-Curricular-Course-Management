@@ -89,14 +89,14 @@ public class SuccessFullCourseAdd extends javax.swing.JFrame {
         header.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         header.setForeground(new java.awt.Color(255, 255, 255));
         header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        header.setText("Extra curricular course Managment");
+        header.setText("Extra Curricular Course Management");
 
         org.jdesktop.layout.GroupLayout titleLayout = new org.jdesktop.layout.GroupLayout(title);
         title.setLayout(titleLayout);
         titleLayout.setHorizontalGroup(
             titleLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, titleLayout.createSequentialGroup()
-                .addContainerGap(561, Short.MAX_VALUE)
+                .addContainerGap(542, Short.MAX_VALUE)
                 .add(header)
                 .add(459, 459, 459))
         );
