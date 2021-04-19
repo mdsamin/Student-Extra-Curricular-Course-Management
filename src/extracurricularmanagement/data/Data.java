@@ -69,25 +69,16 @@ public class Data {
     });
     public static List<String> location = Arrays.asList(new String[]{
         "Swiming Pool hall",
-        "Swiming Pool 1",
-        "Swiming Pool 1",
-        "Swiming Pool 2",
-        "Art School Hall",
-        "Art School Hall",
-        "Art School Yard",
         "Art School Hall 2",
-        "Football field 1",
-        "Football field 2",
-        "Football field 1",
-        "Football field 2",
-        "Art School Hall",
         "Art School Hall",
         "Art School Yard",
-        "Art School Yard",
+        "Football field 1",
+        "Football field 2",
         "Indoor Stadium yard",
         "Indoor Stadium",
         "Math school Yard",
-        "Indoor Stadium"});
+        "Swiming Pool 1",
+        "Swiming Pool 2"});
 
     public static List<Course> courseList = new ArrayList<>(Arrays.asList(
             new Course("klopp", "1", "Pre Swiming", "Swiming Pool hall", "Monday", "10:00-11:00", 15),
