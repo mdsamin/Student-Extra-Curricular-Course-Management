@@ -429,9 +429,9 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
 
     private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
         // TODO add your handling code here:
-
+        int courseCount = Data.courseList.size() + 1;
         String coachID = Data.currentLoggedCoach;
-        String courseID = Integer.toString(Data.courseCount++);
+        String courseID = Integer.toString(courseCount);
         String expertise = expertise_jComboBox1.getSelectedItem().toString();
         String classLocation = classLocations_jComboBox2.getSelectedItem().toString();
         String classDay = classDay_jComboBox3.getSelectedItem().toString();;
