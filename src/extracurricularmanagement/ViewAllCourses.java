@@ -527,6 +527,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
         List<EnrolledCourses> myCourses = Data.enrolledCourses.stream()
                 .filter(ec -> ec.getStudentID().equals(Data.currentLoggedStudent))
                 .collect(Collectors.toList());
+        
         List<Course> myCoursesList = new ArrayList<>();
         myCourses.forEach(ec -> {
             myCoursesList.add(ec.getCourse());
