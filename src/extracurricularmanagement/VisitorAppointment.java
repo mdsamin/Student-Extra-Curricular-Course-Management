@@ -302,15 +302,15 @@ public class VisitorAppointment extends javax.swing.JFrame {
                     .collect(Collectors.toList());
 
             if (coachHasCourseOptional.isPresent()) {
-                JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, coach has clas on the same time!.");
+                JOptionPane.showMessageDialog(rootPane, "Sorry, coach has class on the same time!.");
             } else {
                 if (appoinmentDuplicate.isPresent() || appoinmentCoachExist.isPresent() || coachAppoinmentsCount.size() >= 3) {
                     if (appoinmentDuplicate.isPresent()) {
-                        JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, You have already an appointment on the same time!");
+                        JOptionPane.showMessageDialog(rootPane, "Sorry, you have already an appointment on the same time!");
                     } else if (appoinmentCoachExist.isPresent()) {
-                        JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, coach already an appointment on the same day and time.");
+                        JOptionPane.showMessageDialog(rootPane, "Sorry, coach already an appointment on the same day and time.");
                     } else if (coachAppoinmentsCount.size() >= 3) {
-                        JOptionPane.showMessageDialog(rootPane, "Coach Has reached his limit per week, please select another week!");
+                        JOptionPane.showMessageDialog(rootPane, "Coach reached limit per week, please select another week!");
                     }
                 } else {
                     Data.appoinments.add(appoinment);
