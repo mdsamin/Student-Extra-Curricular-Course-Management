@@ -102,7 +102,14 @@ public class Data {
             new Course("ole", "19", "Abacus", "Math school Yard", "Thursday", "16:00-17:00", 10),
             new Course("ole", "20", "Fitness", "Indoor Stadium", "Friday", "16:00-17:00", 20)
     ));
-    public static List<Appoinment> appoinments = new ArrayList<>();
+    public static List<Appoinment> appoinments = new ArrayList<>(Arrays.asList(
+            new Appoinment("klopp", "Johnn", "15:00-15:20", "Monday", "Week 1"),
+            new Appoinment("jose", "Ryan", "16:00-16:20", "Tuesday", "Week 2"),
+            new Appoinment("pep", "Tina", "10:00-10:20", "Wednesday", "Week 2"),
+            new Appoinment("brendan", "Joseph", "16:00-16:20", "Thursday", "Week 4"),
+            new Appoinment("ole", "Mike", "11:00-11:20", "Friday", "Week 1")
+    ));
+
     public static List<EnrolledCourses> enrolledCourses = new ArrayList<>();
     public static List<EnrolledCourses> cancelledCourses = new ArrayList<>();
     public static List<Student> studentsList = new ArrayList<>(Arrays.asList(
