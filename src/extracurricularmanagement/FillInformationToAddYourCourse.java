@@ -227,7 +227,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         });
 
         goBack1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        goBack1.setText("Show Previous Courses");
+        goBack1.setText("Show All Course");
         goBack1.setAutoscrolls(true);
         goBack1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
