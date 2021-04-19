@@ -357,9 +357,9 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                    .add(359, 359, 359)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1106, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addContainerGap(364, Short.MAX_VALUE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1094, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(20, 20, 20)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -371,8 +371,8 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                    .add(0, 81, Short.MAX_VALUE)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 568, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(0, 80, Short.MAX_VALUE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 579, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();

@@ -41,56 +41,75 @@ public class Data {
         coachListObject.get(3).getId(),//Brendan
         coachListObject.get(4).getId()});//oles
     public static List<String> expertiseList = Arrays.asList(new String[]{
-        "Swiming", "Music", "Dancing", "Chess", "Gymnastics"
-    });
+        "100m Race",
+        "Abacus",
+        "Advance Chess",
+        "Badminton",
+        "Chess - Introduction",
+        "Dancing",
+        "Fitness",
+        "French – speaking",
+        "High Jump",
+        "Long jump",
+        "Marathon Prep",
+        "Musical grammar",
+        "Piano",
+        "Pre Swiming",
+        "Swiming - Match Prep",
+        "Swiming - Advance",
+        "Swiming",
+        "Violin Starter",
+        "Violin",
+        "Yoga and meditaion"});
     public static List<String> date = Arrays.asList(new String[]{
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
     });
     public static List<String> timeSlot = Arrays.asList(new String[]{
-        "10:00-11:00", "11:00-12:00", "12:00-13:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "10:00-11:00"
+        "10:00-11:00", "11:00-12:00", "12:00-13:00", "14:00-15:00", "15:00-16:00", "16:00-17:00"
     });
     public static List<String> location = Arrays.asList(new String[]{
+        "Swiming Pool hall",
+        "Swiming Pool 1",
         "Swiming Pool 1",
         "Swiming Pool 2",
-        "Art School Yeard",
-        "Art SChool Hall",
+        "Art School Hall",
+        "Art School Hall",
+        "Art School Yard",
         "Art School Hall 2",
-        "Math school Yeard",
-        "Gym 1",
-        "Gym 2"
-    });
+        "Football field 1",
+        "Football field 2",
+        "Football field 1",
+        "Football field 2",
+        "Art School Hall",
+        "Art School Hall",
+        "Art School Yard",
+        "Art School Yard",
+        "Indoor Stadium yard",
+        "Indoor Stadium",
+        "Math school Yard",
+        "Indoor Stadium"});
 
     public static List<Course> courseList = new ArrayList<>(Arrays.asList(
-            new Course(Data.coachList.get(0),
-                    Integer.toString(courseCount++),
-                    Data.expertiseList.get(0),
-                    Data.location.get(0), Data.date.get(0), Data.timeSlot.get(0),
-                    getVacancy()),
-            new Course(Data.coachList.get(0),
-                    Integer.toString(courseCount++),
-                    Data.expertiseList.get(0),
-                    Data.location.get(0), Data.date.get(1), Data.timeSlot.get(0),
-                    getVacancy()),
-            new Course(Data.coachList.get(1),
-                    Integer.toString(courseCount++),
-                    Data.expertiseList.get(1),
-                    Data.location.get(4), Data.date.get(0), Data.timeSlot.get(1),
-                    getVacancy()),
-            new Course(Data.coachList.get(1),
-                    Integer.toString(courseCount++),
-                    Data.expertiseList.get(1),
-                    Data.location.get(5), Data.date.get(0), Data.timeSlot.get(2),
-                    getVacancy()),
-            new Course(Data.coachList.get(2),
-                    Integer.toString(courseCount++),
-                    Data.expertiseList.get(2),
-                    Data.location.get(2), Data.date.get(2), Data.timeSlot.get(0),
-                    getVacancy()),
-            new Course(Data.coachList.get(2),
-                    Integer.toString(courseCount++),
-                    Data.expertiseList.get(2),
-                    Data.location.get(3), Data.date.get(3), Data.timeSlot.get(0),
-                    getVacancy())
+            new Course("klopp", "1", "Pre Swiming", "Swiming Pool hall", "Monday", "10:00-11:00", 15),
+            new Course("klopp", "2", "Swiming", "Swiming Pool 1", "Tuesday", "11:00-12:00", 15),
+            new Course("klopp", "3", "Swiming - Advance", "Swiming Pool 1", "Wednesday", "12:00-13:00", 10),
+            new Course("klopp", "4", "Swiming - Match Prep", "Swiming Pool 2", "Thursday", "13:00-14:00", 7),
+            new Course("jose", "5", "Musical grammar", "Art School Hall", "Friday", "15:00-16:00", 20),
+            new Course("jose", "6", "Violin Starter", "Art School Hall", "Monday", "10:00-11:00", 20),
+            new Course("jose", "7", "Violin", "Art School Yard", "Tuesday", "11:00-12:00", 20),
+            new Course("jose", "8", "Piano", "Art School Hall 2", "Wednesday", "12:00-13:00", 5),
+            new Course("pep", "9", "100m Race", "Football field 1", "Thursday", "16:00-17:00", 20),
+            new Course("pep", "10", "Long jump", "Football field 2", "Friday", "16:00-17:00", 20),
+            new Course("pep", "11", "Marathon Prep", "Football field 1", "Monday", "16:00-17:00", 30),
+            new Course("pep", "12", "High Jump", "Football field 2", "Tuesday", "16:00-17:00", 20),
+            new Course("brendan", "13", "Yoga and meditaion", "Art School Hall", "Wednesday", "12:00-13:00", 30),
+            new Course("brendan", "14", "Dancing", "Art School Hall", "Thursday", "14:00-15:00", 15),
+            new Course("brendan", "15", "French - speaking", "Art School Yard", "Friday", "15:00-16:00", 20),
+            new Course("brendan", "16", "Chess - Introduction", "Art School Yard", "Monday", "10:00-11:00", 22),
+            new Course("ole", "17", "Advance Chess", "Indoor Stadium yard", "Tuesday", "11:00-12:00", 18),
+            new Course("ole", "18", "Badminton", "Indoor Stadium", "Wednesday", "12:00-13:00", 10),
+            new Course("ole", "19", "Abacus", "Math school Yard", "Thursday", "16:00-17:00", 10),
+            new Course("ole", "20", "Fitness", "Indoor Stadium", "Friday", "16:00-17:00", 20)
     ));
     public static List<Appoinment> appoinments = new ArrayList<>();
     public static List<EnrolledCourses> enrolledCourses = new ArrayList<>();
