@@ -67,12 +67,15 @@ public class Report extends javax.swing.JFrame {
         loadAppoinments_jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         visitorsReports_jTable2 = new javax.swing.JTable();
-        student_jTabbedPane2 = new javax.swing.JTabbedPane();
-        student_report_jPanel2 = new javax.swing.JPanel();
+        studentReport_jTabbedPane2 = new javax.swing.JTabbedPane();
+        enrolledCourses_jPanel2 = new javax.swing.JPanel();
         loadAllEnrolled_students_jButton1 = new javax.swing.JButton();
         enrolledCourses_jScrollPane3 = new javax.swing.JScrollPane();
         enrolledStudent_jTable3 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        cancelledCoures_jPanel1 = new javax.swing.JPanel();
+        loadAllCancelled_courses_jButton2 = new javax.swing.JButton();
+        cancelledCourses_jScrollPane4 = new javax.swing.JScrollPane();
+        cancelledStudent_jTable4 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -203,7 +206,7 @@ public class Report extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Visitor Appointment Report", visitor_appoinment_jPanel4);
 
-        loadAllEnrolled_students_jButton1.setText("Load All Enrolled Students");
+        loadAllEnrolled_students_jButton1.setText("Load All Enrolled Courses");
         loadAllEnrolled_students_jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadAllEnrolled_students_jButton1ActionPerformed(evt);
@@ -221,43 +224,71 @@ public class Report extends javax.swing.JFrame {
         ));
         enrolledCourses_jScrollPane3.setViewportView(enrolledStudent_jTable3);
 
-        org.jdesktop.layout.GroupLayout student_report_jPanel2Layout = new org.jdesktop.layout.GroupLayout(student_report_jPanel2);
-        student_report_jPanel2.setLayout(student_report_jPanel2Layout);
-        student_report_jPanel2Layout.setHorizontalGroup(
-            student_report_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(student_report_jPanel2Layout.createSequentialGroup()
+        org.jdesktop.layout.GroupLayout enrolledCourses_jPanel2Layout = new org.jdesktop.layout.GroupLayout(enrolledCourses_jPanel2);
+        enrolledCourses_jPanel2.setLayout(enrolledCourses_jPanel2Layout);
+        enrolledCourses_jPanel2Layout.setHorizontalGroup(
+            enrolledCourses_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(enrolledCourses_jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(student_report_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(student_report_jPanel2Layout.createSequentialGroup()
+                .add(enrolledCourses_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(enrolledCourses_jPanel2Layout.createSequentialGroup()
                         .add(loadAllEnrolled_students_jButton1)
                         .add(0, 0, Short.MAX_VALUE))
                     .add(enrolledCourses_jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1560, Short.MAX_VALUE)))
         );
-        student_report_jPanel2Layout.setVerticalGroup(
-            student_report_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(student_report_jPanel2Layout.createSequentialGroup()
+        enrolledCourses_jPanel2Layout.setVerticalGroup(
+            enrolledCourses_jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(enrolledCourses_jPanel2Layout.createSequentialGroup()
                 .add(loadAllEnrolled_students_jButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(enrolledCourses_jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 507, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        student_jTabbedPane2.addTab("Enrolled", student_report_jPanel2);
+        studentReport_jTabbedPane2.addTab("Enrolled", enrolledCourses_jPanel2);
 
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1572, Short.MAX_VALUE)
+        loadAllCancelled_courses_jButton2.setText("Load All Cancelled Courses");
+        loadAllCancelled_courses_jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadAllCancelled_courses_jButton2ActionPerformed(evt);
+            }
+        });
+
+        cancelledStudent_jTable4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cancelledStudent_jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Student Name", "Course Name", "Coach Name", "Date", "Time", "Location"
+            }
+        ));
+        cancelledCourses_jScrollPane4.setViewportView(cancelledStudent_jTable4);
+
+        org.jdesktop.layout.GroupLayout cancelledCoures_jPanel1Layout = new org.jdesktop.layout.GroupLayout(cancelledCoures_jPanel1);
+        cancelledCoures_jPanel1.setLayout(cancelledCoures_jPanel1Layout);
+        cancelledCoures_jPanel1Layout.setHorizontalGroup(
+            cancelledCoures_jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(cancelledCoures_jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(cancelledCoures_jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(cancelledCoures_jPanel1Layout.createSequentialGroup()
+                        .add(loadAllCancelled_courses_jButton2)
+                        .add(0, 0, Short.MAX_VALUE))
+                    .add(cancelledCourses_jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1560, Short.MAX_VALUE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 508, Short.MAX_VALUE)
+        cancelledCoures_jPanel1Layout.setVerticalGroup(
+            cancelledCoures_jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(cancelledCoures_jPanel1Layout.createSequentialGroup()
+                .add(loadAllCancelled_courses_jButton2)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(cancelledCourses_jScrollPane4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 507, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        student_jTabbedPane2.addTab("Cancelled", jPanel1);
+        studentReport_jTabbedPane2.addTab("Cancelled", cancelledCoures_jPanel1);
 
-        jTabbedPane1.addTab("Student", student_jTabbedPane2);
+        jTabbedPane1.addTab("Student", studentReport_jTabbedPane2);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -312,6 +343,10 @@ public class Report extends javax.swing.JFrame {
         model.setRowCount(0);
         addAllEnrolledStudentsRowToJTable();
     }//GEN-LAST:event_loadAllEnrolled_students_jButton1ActionPerformed
+
+    private void loadAllCancelled_courses_jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadAllCancelled_courses_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loadAllCancelled_courses_jButton2ActionPerformed
 
     public void addAllCoursesRowToJTable() {
         DefaultTableModel model = (DefaultTableModel) allCourses_jTable1.getModel();
@@ -452,20 +487,23 @@ public class Report extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable allCourses_jTable1;
     private javax.swing.JPanel all_lesson_jPanel3;
+    private javax.swing.JPanel cancelledCoures_jPanel1;
+    private javax.swing.JScrollPane cancelledCourses_jScrollPane4;
+    private javax.swing.JTable cancelledStudent_jTable4;
+    private javax.swing.JPanel enrolledCourses_jPanel2;
     private javax.swing.JScrollPane enrolledCourses_jScrollPane3;
     private javax.swing.JTable enrolledStudent_jTable3;
     private javax.swing.JButton goBack;
     private javax.swing.JLabel header;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton loadAllCancelled_courses_jButton2;
     private javax.swing.JButton loadAllEnrolled_students_jButton1;
     private javax.swing.JButton loadAppoinments_jButton1;
     private javax.swing.JButton refresh_jButton1;
-    private javax.swing.JTabbedPane student_jTabbedPane2;
-    private javax.swing.JPanel student_report_jPanel2;
+    private javax.swing.JTabbedPane studentReport_jTabbedPane2;
     private javax.swing.JPanel title;
     private javax.swing.JPanel visitor_appoinment_jPanel4;
     private javax.swing.JTable visitorsReports_jTable2;
