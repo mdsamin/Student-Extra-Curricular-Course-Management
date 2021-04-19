@@ -157,7 +157,7 @@ public class VisitorAppointment extends javax.swing.JFrame {
         });
 
         classTime_jComboBox6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        classTime_jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "09:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "" }));
+        classTime_jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "09:00-09:20", "09:20-09:40", "09:40-10:00", "10:00-10:20", "10:20-10:40", "10:40-11:00", "11:00-11:20", "11:20-11:40", "11:40-12:00", "12:00-12:20", "12:20-12:40", "12:40-13:00", "14:00-14:20", "14:20-14:40", "14:40-15:00", "15:00-15:20", "15:20-15:40", "15:40-16:00", "16:00-16:20", "16:20-16:40", "16:40-17:00" }));
         classTime_jComboBox6.setAutoscrolls(true);
         classTime_jComboBox6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
