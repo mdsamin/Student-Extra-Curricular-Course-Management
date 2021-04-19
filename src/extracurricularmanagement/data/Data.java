@@ -85,6 +85,7 @@ public class Data {
     ));
     public static List<Appoinment> appoinments = new ArrayList<>();
     public static List<EnrolledCourses> enrolledCourses = new ArrayList<>();
+    public static List<EnrolledCourses> cancelledCourses = new ArrayList<>();
     public static List<Student> studentsList = new ArrayList<>(Arrays.asList(
             new Student(1, "A", "015", "XX"),
             new Student(2, "B", "016", "YY")

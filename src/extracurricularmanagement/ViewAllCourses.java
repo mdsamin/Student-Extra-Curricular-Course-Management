@@ -553,7 +553,7 @@ public class ViewAllCourses extends javax.swing.JFrame {
                     c.setVacancies(++vacancy);
                 }
             });
-
+            Data.cancelledCourses.add(enrollCourseOptional.get());
             locadCourses_jButton4ActionPerformed(evt);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Error in cenceling Course!");
