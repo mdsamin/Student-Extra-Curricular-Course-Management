@@ -341,11 +341,15 @@ public class Report extends javax.swing.JFrame {
         Data.enrolledCourses.forEach(e -> System.out.println(e.toString()));
         DefaultTableModel model = (DefaultTableModel) enrolledStudent_jTable3.getModel();
         model.setRowCount(0);
-        addAllEnrolledStudentsRowToJTable();
+        setStudentCoures(Data.enrolledCourses, model);
     }//GEN-LAST:event_loadAllEnrolled_students_jButton1ActionPerformed
 
     private void loadAllCancelled_courses_jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadAllCancelled_courses_jButton2ActionPerformed
         // TODO add your handling code here:
+        Data.cancelledCourses.forEach(e -> System.out.println(e.toString()));
+        DefaultTableModel model = (DefaultTableModel) cancelledStudent_jTable4.getModel();
+        model.setRowCount(0);
+        setStudentCoures(Data.cancelledCourses, model);
     }//GEN-LAST:event_loadAllCancelled_courses_jButton2ActionPerformed
 
     public void addAllCoursesRowToJTable() {
@@ -392,9 +396,57 @@ public class Report extends javax.swing.JFrame {
         }
     }
 
-    public void addAllEnrolledStudentsRowToJTable() {
-        DefaultTableModel model = (DefaultTableModel) enrolledStudent_jTable3.getModel();
-        List<EnrolledCourses> listEnrolledCourse = Data.enrolledCourses;
+    public void setStudentCoures(List<EnrolledCourses> listOfCourse, DefaultTableModel model) {
+//        listOfCourse = Data.enrolledCourses;
+        Object rowData[] = new Object[6];
+        for (int i = 0; i < listOfCourse.size(); i++) {
+
+            //student name
+            int studentID = Integer.parseInt(listOfCourse.get(i).getStudentID());
+            Student student = Data.studentsList.stream().filter(s -> s.getId() == studentID).findFirst().get();
+            String studentName = student.getName();
+            rowData[0] = studentName;
+            //course name
+            rowData[1] = listOfCourse.get(i).getCourse().getExpertise();
+//            Coach name, 
+            rowData[2] = listOfCourse.get(i).getCourse().getCoachID();
+//            Date,
+            rowData[3] = listOfCourse.get(i).getCourse().getClassDay();
+//            Time, 
+            rowData[4] = listOfCourse.get(i).getCourse().getClassTime();
+//            Location, 
+            rowData[5] = listOfCourse.get(i).getCourse().getClassLocation();
+            model.addRow(rowData);
+        }
+    }
+
+//    public void addAllEnrolledStudentsRowToJTable() {
+//        DefaultTableModel model = (DefaultTableModel) enrolledStudent_jTable3.getModel();
+//        List<EnrolledCourses> listEnrolledCourse = Data.enrolledCourses;
+//        Object rowData[] = new Object[6];
+//        for (int i = 0; i < listEnrolledCourse.size(); i++) {
+//
+//            //student name
+//            int studentID = Integer.parseInt(listEnrolledCourse.get(i).getStudentID());
+//            Student student = Data.studentsList.stream().filter(s -> s.getId() == studentID).findFirst().get();
+//            String studentName = student.getName();
+//            rowData[0] = studentName;
+//            //course name
+//            rowData[1] = listEnrolledCourse.get(i).getCourse().getExpertise();
+////            Coach name, 
+//            rowData[2] = listEnrolledCourse.get(i).getCourse().getCoachID();
+////            Date,
+//            rowData[3] = listEnrolledCourse.get(i).getCourse().getClassDay();
+////            Time, 
+//            rowData[4] = listEnrolledCourse.get(i).getCourse().getClassTime();
+////            Location, 
+//            rowData[5] = listEnrolledCourse.get(i).getCourse().getClassLocation();
+//            model.addRow(rowData);
+//        }
+//    }
+    public void addAllCancelledStudentsRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) cancelledStudent_jTable4.getModel();
+        List<EnrolledCourses> listEnrolledCourse = Data.cancelledCourses;
         Object rowData[] = new Object[6];
         for (int i = 0; i < listEnrolledCourse.size(); i++) {
 
