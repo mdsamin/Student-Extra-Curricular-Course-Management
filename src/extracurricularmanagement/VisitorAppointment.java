@@ -277,6 +277,12 @@ public class VisitorAppointment extends javax.swing.JFrame {
 
             Appoinment appoinment = new Appoinment(coachName, visitorName, time, day, weekNo);
 
+            //TODO: have to  move them into separate method
+            //check coach : coach has course in the same time.
+            Optional<Course> coachHasCourseOptional = Data.courseList.stream()
+                    .filter(c -> c.getClassDay().equals(day) && c.getClassTime().equals(time))
+                    .findFirst();
+
             //check-vistor : same week-date-time
             Optional<Appoinment> appoinmentDuplicate = Data.appoinments.stream()
                     .filter(a -> a.getWeekNumber().equals(weekNo) && a.getDay().equals(day) && a.getTime().equals(time) && a.getVisitorName().equals(visitorName))
@@ -293,27 +299,23 @@ public class VisitorAppointment extends javax.swing.JFrame {
                     .filter(a -> a.getCoachName().equals(coachName) && a.getWeekNumber().equals(weekNo))
                     .collect(Collectors.toList());
 
-            //TODO: have to  move them into separate method
-            //check coach : coach has course in the same time.
-            Optional<Course> coachHasCourseOptional = Data.courseList.stream()
-                    .filter(c -> c.getClassDay().equals(day) && c.getClassTime().equals(time))
-                    .findFirst();
-
-            if (appoinmentDuplicate.isPresent() || appoinmentCoachExist.isPresent() || coachHasCourseOptional.isPresent() || coachAppoinmentsCount.size() >= 3) {
-                if (appoinmentDuplicate.isPresent()) {
-                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, You have already an appointment on the same time!");
-                } else if (appoinmentCoachExist.isPresent()) {
-                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, coach already an appointment on the same day and time.");
-                } else if (coachAppoinmentsCount.size() >= 3) {
-                    JOptionPane.showMessageDialog(rootPane, "Coach Has reached his limit per week, please select another week!");
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, coach has clas on the same time!.");
-                }
+            if (coachHasCourseOptional.isPresent()) {
+                JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, coach has clas on the same time!.");
             } else {
-                Data.appoinments.add(appoinment);
-                //TODO: clean
-                Data.appoinments.forEach(a -> System.out.println(a.toString()));
-                JOptionPane.showMessageDialog(rootPane, "Appoinment confirmed successful!");
+                if (appoinmentDuplicate.isPresent() || appoinmentCoachExist.isPresent() || coachAppoinmentsCount.size() >= 3) {
+                    if (appoinmentDuplicate.isPresent()) {
+                        JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, You have already an appointment on the same time!");
+                    } else if (appoinmentCoachExist.isPresent()) {
+                        JOptionPane.showMessageDialog(rootPane, "Sorry Not Possible, coach already an appointment on the same day and time.");
+                    } else if (coachAppoinmentsCount.size() >= 3) {
+                        JOptionPane.showMessageDialog(rootPane, "Coach Has reached his limit per week, please select another week!");
+                    }
+                } else {
+                    Data.appoinments.add(appoinment);
+                    //TODO: clean
+                    Data.appoinments.forEach(a -> System.out.println(a.toString()));
+                    JOptionPane.showMessageDialog(rootPane, "Appoinment confirmed successful!");
+                }
             }
         }
     }//GEN-LAST:event_enroll_jButton2ActionPerformed
