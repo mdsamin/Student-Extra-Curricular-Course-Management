@@ -375,7 +375,7 @@ public class StudentCreateAccountLogin extends javax.swing.JFrame {
         } else {
             try {
                 phoneNumber = Integer.parseInt(phone);
-                Student student = new Student(Data.studentsList.size() + 1, name, phone, address);
+                Student student = new Student(100 + Data.studentsList.size() + 1, name, phone, address);
                 Data.studentsList.add(student);
                 JOptionPane.showMessageDialog(rootPane, "Account Created Successfully!"
                         + "\n ID : " + student.getId());
