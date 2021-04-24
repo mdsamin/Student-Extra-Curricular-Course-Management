@@ -219,7 +219,7 @@ public class SuccessFullCourseAdd extends javax.swing.JFrame {
 
     private void ok_jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ok_jButton1ActionPerformed
         // TODO add your handling code here:
-        FillInformationToAddYourCourse addYourCourse = new FillInformationToAddYourCourse();
+        AddYourCourse addYourCourse = new AddYourCourse();
         addYourCourse.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ok_jButton1ActionPerformed

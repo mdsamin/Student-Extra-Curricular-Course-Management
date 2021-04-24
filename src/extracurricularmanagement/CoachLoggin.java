@@ -225,7 +225,7 @@ public class CoachLoggin extends javax.swing.JFrame {
                     .findFirst();
             if (coach.isPresent()) {
                 Data.currentLoggedCoach = logginID;
-                FillInformationToAddYourCourse addYourCourse = new FillInformationToAddYourCourse();
+                AddYourCourse addYourCourse = new AddYourCourse();
                 addYourCourse.setVisible(true);
                 this.dispose();
             } else {

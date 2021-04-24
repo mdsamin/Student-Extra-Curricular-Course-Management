@@ -37,12 +37,12 @@ import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class FillInformationToAddYourCourse extends javax.swing.JFrame {
+public class AddYourCourse extends javax.swing.JFrame {
 
     /**
      * Creates new form Antenna
      */
-    public FillInformationToAddYourCourse() {
+    public AddYourCourse() {
         initComponents();
         Data.expertiseList.forEach(e -> expertise_jComboBox1.addItem(e));
         Data.location.forEach(l -> classLocations_jComboBox2.addItem(l));
@@ -438,10 +438,13 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         String classTime = classTime_jComboBox4.getSelectedItem().toString();
         String vacancies = vacancies_jComboBox5.getSelectedItem().toString();
 
-        Course course = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, Integer.parseInt(vacancies));
+        Course courseToAdd = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, Integer.parseInt(vacancies));
 
         Optional<Course> courseOptional = Data.courseList.stream()
-                .filter(c -> c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime) && c.getClassLocation().equals(classLocation))
+                .filter(c -> c.getClassDay().equals(classDay) 
+                        && c.getClassTime().equals(classTime) 
+                        && c.getClassLocation().equals(classLocation) 
+                        && c.getCoachID().equals(Data.currentLoggedCoach))
                 //                .filter(c -> c.getCoachID().equals(Data.currentLoggedCoach) && c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
                 //                .filter(c -> c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
                 .findFirst();
@@ -451,7 +454,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                     + "\nAnother course Same Day and Time!"
                     + "\nChange Either Course, Date or Time");
         } else {
-            Data.courseList.add(course);
+            Data.courseList.add(courseToAdd);
             Data.courseList.forEach(c -> System.out.println(c.toString()));
             JOptionPane.showMessageDialog(rootPane, "Course Added SccessFully!");
             addRowToJTable();
@@ -495,14 +498,30 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FillInformationToAddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FillInformationToAddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FillInformationToAddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FillInformationToAddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddYourCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -523,7 +542,7 @@ public class FillInformationToAddYourCourse extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FillInformationToAddYourCourse().setVisible(true);
+                new AddYourCourse().setVisible(true);
             }
         });
     }
