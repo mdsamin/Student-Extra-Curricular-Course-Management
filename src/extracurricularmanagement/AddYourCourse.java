@@ -441,13 +441,11 @@ public class AddYourCourse extends javax.swing.JFrame {
         Course courseToAdd = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, Integer.parseInt(vacancies));
 
         Optional<Course> courseOptional = Data.courseList.stream()
-                .filter(c -> c.getClassDay().equals(classDay) 
-                        && c.getClassTime().equals(classTime) 
-                        && c.getClassLocation().equals(classLocation) 
-                        && c.getCoachID().equals(Data.currentLoggedCoach))
-                //                .filter(c -> c.getCoachID().equals(Data.currentLoggedCoach) && c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
-                //                .filter(c -> c.getClassDay().equals(classDay) && c.getClassTime().equals(classTime))
+                .filter(c -> c.getClassDay().equals(classDay)
+                && c.getClassTime().equals(classTime)
+                && c.getCoachID().equals(Data.currentLoggedCoach))
                 .findFirst();
+
         System.out.println("courseOptional : " + courseOptional.toString());
         if (courseOptional.isPresent()) {
             JOptionPane.showMessageDialog(rootPane, "Conflict Course!"
