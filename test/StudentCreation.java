@@ -41,8 +41,9 @@ public class StudentCreation {
     @Test
     public void studentCreation() {
         Student s = new Student();
-        assertEquals(Data.studentsList.size(), 2);
+        assertEquals(Data.studentsList.size(), 15);
         Data.studentsList.add(s);
-        assertEquals(Data.studentsList.size(), 3);
+        assertEquals(Data.studentsList.size(), 16);
     }
+
 }

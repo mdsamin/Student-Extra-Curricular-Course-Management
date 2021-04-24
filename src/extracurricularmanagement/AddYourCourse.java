@@ -31,7 +31,9 @@ package extracurricularmanagement;
 
 import extracurricularmanagement.data.Data;
 import extracurricularmanagement.model.Course;
+import extracurricularmanagement.model.CheckCourseValidityResponse;
 import extracurricularmanagement.model.Student;
+import extracurricularmanagement.service.CourseAdd;
 import java.util.List;
 import java.util.Optional;
 import javax.swing.JOptionPane;
@@ -439,35 +441,16 @@ public class AddYourCourse extends javax.swing.JFrame {
         String vacancies = vacancies_jComboBox5.getSelectedItem().toString();
 
         Course courseToAdd = new Course(coachID, courseID, expertise, classLocation, classDay, classTime, Integer.parseInt(vacancies));
+        CourseAdd courseAdd = new CourseAdd();
+        CheckCourseValidityResponse checkCourseValidityResponse = courseAdd.checkCourse(courseToAdd);
 
-        Optional<Course> courseOptional = Data.courseList.stream()
-                .filter(c -> c.getClassDay().equals(classDay)
-                && c.getClassTime().equals(classTime)
-                && c.getCoachID().equals(Data.currentLoggedCoach))
-                .findFirst();
-
-        Optional<Course> courseSameLocation = Data.courseList.stream()
-                .filter(c -> c.getClassDay().equals(classDay)
-                && c.getClassTime().equals(classTime)
-                && c.getClassLocation().equals(classLocation))
-                .findFirst();
-
-        System.out.println("courseOptional : " + courseOptional.toString());
-        if (courseOptional.isPresent()) {
-            JOptionPane.showMessageDialog(rootPane, "Conflict Course!"
-                    + "\nAnother course Same Day and Time!"
-                    + "\nChange Either Course, Date or Time");
+        if (checkCourseValidityResponse.isCourseAdd() == false) {
+            JOptionPane.showMessageDialog(rootPane, checkCourseValidityResponse.getMessage());
         } else {
-            if (courseSameLocation.isPresent()) {
-                JOptionPane.showMessageDialog(rootPane, "Conflict Course : "
-                        + "\nAnother course Same Day and Time in same location!!"
-                        + "\n");
-            } else {
-                Data.courseList.add(courseToAdd);
-                Data.courseList.forEach(c -> System.out.println(c.toString()));
-                JOptionPane.showMessageDialog(rootPane, "Course Added SccessFully!");
-                addRowToJTable();
-            }
+            Data.courseList.add(courseToAdd);
+            Data.courseList.forEach(c -> System.out.println(c.toString()));
+            JOptionPane.showMessageDialog(rootPane, "Course Added SccessFully!");
+            addRowToJTable();
         }
     }//GEN-LAST:event_save_buttonActionPerformed
 
