@@ -444,7 +444,7 @@ public class AddYourCourse extends javax.swing.JFrame {
         CourseAdd courseAdd = new CourseAdd();
         CheckCourseValidityResponse checkCourseValidityResponse = courseAdd.checkCourse(courseToAdd);
 
-        if (checkCourseValidityResponse.isCourseAdd() == false) {
+        if (checkCourseValidityResponse.isCourseValid() == false) {
             JOptionPane.showMessageDialog(rootPane, checkCourseValidityResponse.getMessage());
         } else {
             Data.courseList.add(courseToAdd);

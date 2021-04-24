@@ -17,8 +17,9 @@ import java.util.Optional;
 public class CourseAdd {
 
     public CheckCourseValidityResponse checkCourse(Course courseToAdd) {
-
         CheckCourseValidityResponse addResponse = new CheckCourseValidityResponse(true, "");
+
+        System.out.println("courseToAdd  :" + courseToAdd.toString());
 
         Optional<Course> sameCoahSameDayTime = Data.courseList.stream()
                 .filter(c -> c.getClassDay().equals(courseToAdd.getClassDay())
@@ -33,14 +34,14 @@ public class CourseAdd {
                 .findFirst();
 
         if (sameCoahSameDayTime.isPresent()) {
-            addResponse.setCourseAdd(false);
+            addResponse.setCourseValid(false);
             addResponse.setMessage("\"Conflict Course!\n"
                     + "\nCoach has Another course Same Day and Time!\n"
                     + "\n\nChange Either Course, Date or Time\"");
             return addResponse;
         }
         if (sameLocation.isPresent()) {
-            addResponse.setCourseAdd(false);
+            addResponse.setCourseValid(false);
             addResponse.setMessage("\"Conflict Location!\n"
                     + "\nAnother Course Same Day and Time in Same Location!\n"
                     + "\n\nChange Date or Time or Location!\"");
@@ -49,6 +50,5 @@ public class CourseAdd {
 
         return addResponse;
     }
-    
-    
+
 }

@@ -11,23 +11,23 @@ package extracurricularmanagement.model;
  */
 public class CheckCourseValidityResponse {
 
-    private boolean courseAdd;
+    private boolean courseValid;
     private String message;
 
     public CheckCourseValidityResponse() {
     }
 
     public CheckCourseValidityResponse(boolean courseAdd, String messString) {
-        this.courseAdd = courseAdd;
+        this.courseValid = courseAdd;
         this.message = messString;
     }
 
-    public boolean isCourseAdd() {
-        return courseAdd;
+    public boolean isCourseValid() {
+        return courseValid;
     }
 
-    public void setCourseAdd(boolean courseAdd) {
-        this.courseAdd = courseAdd;
+    public void setCourseValid(boolean courseAdd) {
+        this.courseValid = courseAdd;
     }
 
     public String getMessage() {
@@ -40,7 +40,7 @@ public class CheckCourseValidityResponse {
 
     @Override
     public String toString() {
-        return "CourseAddResponse{" + "courseAdd=" + courseAdd + ", message=" + message + '}';
+        return "CourseAddResponse{" + "course valid=" + courseValid + ", message=" + message + '}';
     }
-    
+
 }
